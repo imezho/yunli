@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAY 2 — 생활과 윤리 완전판</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+:root{
+  --bg:#0c0c0f;--surface:#14141a;--surface2:#1c1c24;--surface3:#22222c;
+  --border:#28283a;--border2:#333345;
+  --y:#f5c842;--g:#4ade80;--r:#f87171;--b:#60a5fa;--p:#c084fc;
+  --text:#e8e8f2;--dim:#9090aa;--dimmer:#505068;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;line-height:1.75;}
+
+.hero{padding:64px 32px 48px;max-width:960px;margin:0 auto;border-bottom:1px solid var(--border);}
+.hero-badge{display:inline-block;background:var(--g);color:#000;font-size:11px;font-weight:700;letter-spacing:.12em;padding:4px 12px;border-radius:2px;margin-bottom:20px;}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(26px,5vw,44px);font-weight:900;line-height:1.2;margin-bottom:14px;}
+.hero h1 .g{color:var(--g);}
+.hero p{color:var(--dim);font-size:14.5px;max-width:600px;line-height:1.85;}
+.file-nav{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;}
+.fnav-btn{padding:8px 18px;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;border:1px solid var(--border2);background:var(--surface);color:var(--dim);}
+.fnav-btn:hover{color:var(--text);border-color:var(--g);}
+.fnav-btn.cur{background:var(--g);color:#000;border-color:var(--g);}
+
+.sticky-nav{position:sticky;top:0;z-index:200;background:rgba(12,12,15,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.sticky-nav-inner{max-width:960px;margin:0 auto;padding:0 32px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;}
+.sticky-nav-inner::-webkit-scrollbar{display:none;}
+.anc-btn{display:inline-block;padding:13px 16px;background:none;border:none;color:var(--dimmer);font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.anc-btn:hover{color:var(--text);}
+.anc-btn.active{color:var(--g);border-bottom-color:var(--g);}
+
+main{max-width:960px;margin:0 auto;padding:0 32px 100px;}
+
+.section{padding-top:60px;}
+.section-header{margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dimmer);margin-bottom:8px;letter-spacing:.1em;}
+.section-title{font-family:'Noto Serif KR',serif;font-size:clamp(20px,3.5vw,30px);font-weight:900;line-height:1.25;}
+.section-title .g{color:var(--g);}
+.section-desc{margin-top:12px;color:var(--dim);font-size:14px;line-height:1.85;max-width:680px;}
+
+.intro-box{background:var(--surface);border-left:3px solid var(--border2);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:20px;font-size:14px;color:var(--dim);line-height:1.85;}
+.intro-box strong{color:var(--text);}
+
+.ctx{background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:20px 24px;margin:16px 0;}
+.ctx-head{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dimmer);margin-bottom:12px;}
+.ctx p{font-size:13.5px;color:var(--dim);line-height:1.85;}
+.ctx p+p{margin-top:10px;}
+
+.tbl-wrap{overflow-x:auto;margin:16px 0;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{background:var(--surface2);padding:11px 15px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--dim);border:1px solid var(--border);}
+td{padding:11px 15px;border:1px solid var(--border);vertical-align:top;line-height:1.65;}
+tr:nth-child(even) td{background:rgba(255,255,255,.012);}
+td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;background:var(--surface);min-width:90px;}
+.hy{color:var(--y);font-weight:700;}
+.hg{color:var(--g);font-weight:700;}
+.hr{color:var(--r);font-weight:700;}
+.hb{color:var(--b);font-weight:700;}
+.hp{color:var(--p);font-weight:700;}
+
+.ex{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0;}
+.ex-head{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dimmer);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.ex-head::before{content:'';display:inline-block;width:3px;height:12px;background:var(--b);border-radius:2px;}
+.ex p{font-size:13.5px;color:var(--dim);line-height:1.85;}
+.ex p+p{margin-top:9px;}
+
+.tip{border-left:3px solid var(--r);background:var(--surface);border-radius:0 7px 7px 0;padding:14px 18px;margin:14px 0;font-size:13.5px;color:var(--dim);line-height:1.8;}
+.tip strong{color:var(--r);}
+.tip.y{border-left-color:var(--y);}
+.tip.y strong{color:var(--y);}
+.tip.g{border-left-color:var(--g);}
+.tip.g strong{color:var(--g);}
+.tip.b{border-left-color:var(--b);}
+.tip.b strong{color:var(--b);}
+
+.bin-box{background:var(--surface);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin:16px 0;}
+.bin-head{padding:12px 18px;background:rgba(74,222,128,.08);border-bottom:1px solid var(--border2);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--g);}
+.bin-row{display:grid;grid-template-columns:1fr 80px;gap:12px;padding:11px 18px;border-bottom:1px solid var(--border);align-items:start;font-size:13px;}
+.bin-row:last-child{border-bottom:none;}
+.bin-q{color:var(--dim);line-height:1.65;}
+.bin-q .bold{color:var(--text);font-weight:600;}
+.bin-o{font-weight:700;font-size:12px;text-align:right;padding-top:1px;}
+.o-t{color:var(--g);}
+.o-f{color:var(--r);}
+
+.odap-box{background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.2);border-radius:8px;overflow:hidden;margin:16px 0;}
+.odap-head{padding:12px 18px;background:rgba(248,113,113,.1);border-bottom:1px solid rgba(248,113,113,.2);font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--r);}
+.odap-item{padding:14px 18px;border-bottom:1px solid rgba(248,113,113,.1);font-size:13.5px;}
+.odap-item:last-child{border-bottom:none;}
+.odap-item .q{font-weight:700;color:var(--text);margin-bottom:6px;}
+.odap-item .why{color:var(--dim);line-height:1.75;}
+.odap-item .why strong{color:var(--r);}
+
+.div{height:1px;background:var(--border);margin:40px 0;}
+
+@media(max-width:640px){
+  .hero,main{padding-left:20px;padding-right:20px;}
+  .sticky-nav-inner{padding:0 20px;}
+  .bin-row{grid-template-columns:1fr 60px;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">DAY 2 · 생활과 윤리</div>
+  <h1>현실 이슈 ×<br><span class="g">윤리적 입장 적용</span></h1>
+  <p>낙태·안락사·사형·환경·정보·원조 — 현실 주제별로 찬반 논거를 파악하는 과목.<br>결론보다 <strong style="color:var(--text)">왜 그 입장인지 논거</strong>를 묻는 문제가 많아.</p>
+  <div class="file-nav">
+    <a class="fnav-btn" href="ethics-day1-yunsah.html">📘 DAY1 윤사</a>
+    <span class="fnav-btn cur">📗 DAY2 생윤</span>
+    <a class="fnav-btn" href="ethics-day3-summary.html">📋 요약+소거법</a>
+  </div>
+</div>
+
+<div class="sticky-nav">
+  <div class="sticky-nav-inner">
+    <button class="anc-btn active" onclick="scrollTo('g1')">① 생명윤리</button>
+    <button class="anc-btn" onclick="scrollTo('g2')">② 성 윤리</button>
+    <button class="anc-btn" onclick="scrollTo('g3')">③ 사형제도</button>
+    <button class="anc-btn" onclick="scrollTo('g4')">④ 환경윤리</button>
+    <button class="anc-btn" onclick="scrollTo('g5')">⑤ 정보윤리</button>
+    <button class="anc-btn" onclick="scrollTo('g6')">⑥ 해외원조·통일</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ════ G1 ════ -->
+<div class="section" id="g1">
+  <div class="section-header">
+    <div class="section-num">SECTION 01 · 생명과 윤리</div>
+    <div class="section-title">생명윤리 — <span class="g">낙태·안락사·자살</span></div>
+    <div class="section-desc">
+      생명의 가치를 어떻게 보느냐에 따라 입장이 갈려.<br>
+      핵심 축: <strong style="color:var(--text)">생명의 절대적 가치</strong> vs <strong style="color:var(--text)">개인의 자율성·선택권</strong>.
+    </div>
+  </div>
+
+  <div class="intro-box">
+    생명에 관한 윤리적 결정은 결국 <strong>"누가 결정권을 가지는가?"</strong>라는 문제야.<br>
+    생명 절대주의: 생명 자체에 신성함이 있어서 본인 포함 누구도 함부로 할 수 없어.<br>
+    자율성 입장: 개인이 자기 몸과 삶에 대한 결정권을 가져.
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 낙태 — 태아의 지위 논쟁</div>
+    <p>낙태 논쟁의 핵심은 <strong style="color:var(--text)">태아가 언제부터 인격체(person)인가</strong>야.</p>
+    <p><strong style="color:var(--text)">보수적 입장:</strong> 수정 순간부터 생명이야. 태아는 잠재적 인격체이므로 낙태는 살인이야. 종교적(가톨릭) 관점에서도 지지해. 어떤 이유로도 정당화 불가.</p>
+    <p><strong style="color:var(--text)">진보적 입장:</strong> 태아는 독립적 생존 가능성이 없는 동안은 완전한 인격체가 아니야. 여성의 신체 자율권이 우선해. 임신 초기에는 허용, 후기에는 제한하는 시기별 접근도 있어.</p>
+    <p><strong style="color:var(--text)">중간 입장:</strong> 강간·건강상 이유 등 특수 상황에서는 허용될 수 있어.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 안락사 — 소극적 vs 적극적</div>
+    <p><strong style="color:var(--text)">소극적 안락사(존엄사):</strong> 회복 불가능한 환자의 연명치료를 중단하는 것. "의미 없는 치료 그만두자." 한국에서 2018년부터 법적으로 허용. 상대적으로 덜 논쟁적이야.</p>
+    <p><strong style="color:var(--text)">적극적 안락사:</strong> 약물 등으로 직접 죽음을 유발하는 것. 네덜란드·벨기에·스위스 등 일부 국가만 허용. 한국은 불법.</p>
+    <p>시험에서 "안락사 허용"이 나오면 소극적·적극적 중 어떤 건지 제시문으로 확인해야 해. 선지에서 두 개를 묶어서 함정 만드는 경우 자주 있어.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="90">주제</th><th>🔴 생명 절대주의 (보수·종교적)</th><th>🟢 자율성 중시 (진보·자유주의적)</th></tr>
+      <tr><td class="rlab">낙태</td><td>수정 순간부터 생명 → 낙태=살인<br>어떤 이유로도 정당화 불가</td><td>여성의 신체 자기결정권 우선<br>태아는 초기에 완전한 인격체 아님</td></tr>
+      <tr><td class="rlab">안락사</td><td>생명은 신성 — 인위적 죽음 금지<br>고통도 삶의 일부</td><td>존엄한 죽음 선택할 권리<br>극심한 고통에서 해방 가능</td></tr>
+      <tr><td class="rlab">자살</td><td>생명은 내 소유 아님 — 도덕적 잘못<br>칸트: 보편 의무 위반</td><td>(극단적) 자기 삶의 완전한 주인<br>단, 현실에서 대부분 반대</td></tr>
+      <tr><td class="rlab">논거 근거</td><td>생명의 내재적 가치<br>종교적 신성함</td><td>개인 자율성·자기결정권<br>고통 감소(공리주의 확장)</td></tr>
+    </table>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head">안락사 찬반 논거 — 시험에 자주 나오는 구도</div>
+    <p><strong style="color:var(--r)">반대 논거:</strong><br>
+    ① 생명의 절대적 가치 — 어떤 이유로도 생명 침해 불가<br>
+    ② 의사의 직업 윤리 — "해를 끼치지 않겠다"는 히포크라테스 선서에 위배<br>
+    ③ 오·남용 위험 — 경제적 부담으로 안락사 압박 받을 수 있어<br>
+    ④ 의학 발전 — 통증 완화 기술이 발전하면 안락사 대안 가능</p>
+    <p><strong style="color:var(--g)">찬성 논거:</strong><br>
+    ① 자기결정권 — 고통받는 삶을 강요하는 것도 존엄 침해<br>
+    ② 공리주의 — 극심한 고통을 줄이는 것이 행복 극대화<br>
+    ③ 이미 죽어가는 과정 — 삶의 연장이 아니라 죽어가는 과정의 연장일 뿐</p>
+  </div>
+
+  <div class="bin-box">
+    <div class="bin-head">🎯 빈출 선지 정오 판단 — 생명윤리</div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">생명절대주의:</span> 인간의 생명은 어떤 상황에서도 침해받을 수 없다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">자율성 입장:</span> 개인은 자신의 죽음에 대해 스스로 결정할 권리가 있다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">보수 입장:</span> 태아는 수정 순간부터 도덕적 지위를 가진다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">자율성 입장:</span> 소극적 안락사와 적극적 안락사는 도덕적으로 동등하다</div><div class="bin-o o-f">✗ (대부분 입장에서 구분)</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">공리주의 적용:</span> 환자의 고통을 최소화하는 안락사는 허용될 수 있다</div><div class="bin-o o-t">✓ (공리주의 논거)</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">칸트 적용:</span> 자살은 인간을 수단으로 대하는 것이므로 도덕적으로 금지된다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">의무론 적용:</span> 안락사는 결과와 무관하게 생명 의무를 위반하므로 금지된다</div><div class="bin-o o-t">✓ (의무론 논거)</div></div>
+  </div>
+
+  <div class="odap-box">
+    <div class="odap-head">⚠️ 자주 틀리는 오답 유형 — 생명윤리</div>
+    <div class="odap-item">
+      <div class="q">① 소극적 안락사 = 적극적 안락사로 묶어서 처리</div>
+      <div class="why">소극적 안락사(연명치료 중단)는 한국에서도 법적으로 허용돼. 반면 적극적 안락사(직접 죽음 유발)는 불법이야. 시험에서 "안락사"라고만 나오면 제시문에서 어떤 종류인지 반드시 확인해야 해. <strong>둘을 같다고 처리하면 틀려.</strong></div>
+    </div>
+    <div class="odap-item">
+      <div class="q">② "낙태 반대 = 여성 권리 무시"라는 단순화</div>
+      <div class="why">낙태 반대는 태아의 생명권을 위한 주장이야. 여성을 무시하는 게 목적이 아니야. 시험에서는 각 입장의 <strong>논거(이유)</strong>를 정확히 파악해야 해. "낙태 반대는 여성의 권리를 인정하지 않는다" → 이런 선지는 과도하게 단순화된 거야.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">③ 공리주의는 안락사에 항상 찬성한다는 오해</div>
+      <div class="why">공리주의는 <strong>결과</strong>에 따라 달라져. 안락사로 사회 전체 행복이 늘면 찬성이지만, 오남용으로 사회 불안이 커지면 반대할 수도 있어. "공리주의라서 무조건 찬성"이라는 선지는 함정이야.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">④ "존엄사" = "안락사"와 동일하게 취급</div>
+      <div class="why">존엄사는 주로 소극적 안락사(연명치료 중단)를 가리키는 용어야. 적극적 안락사와 구분되는 개념으로 쓰이는 경우가 많아. 시험 제시문에서 어떤 의미로 쓰였는지 확인해야 해.</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G2 ════ -->
+<div class="section" id="g2">
+  <div class="section-header">
+    <div class="section-num">SECTION 02 · 성과 사랑</div>
+    <div class="section-title">성(性) 윤리 — <span class="g">전통 vs 자율</span></div>
+    <div class="section-desc">
+      성에 관한 세 가지 윤리적 입장. 결혼·사랑·자기결정권 중 어느 것이 기준이냐에 따라 갈려.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 성윤리 세 입장 — 보수·중도·진보</div>
+    <p><strong style="color:var(--text)">보수적(전통적) 성윤리:</strong> 성은 오직 결혼 안에서, 생식과 사랑이 연결될 때만 도덕적으로 허용돼. 전통·종교적 가치관. 혼외 관계는 도덕적으로 잘못됐다는 입장.</p>
+    <p><strong style="color:var(--text)">중도적 입장(사랑 기반):</strong> 결혼 여부와 무관하게, 사랑이 있으면 성적 관계는 허용 가능. 현실에서 많은 사람이 이 입장이고, 시험에서 자주 나오는 중간 포지션이야.</p>
+    <p><strong style="color:var(--text)">진보적(자유주의적) 성윤리:</strong> 성인 간 자발적 동의와 타인에게 해악을 끼치지 않으면 도덕적으로 문제없어. 성적 자기결정권이 핵심. 사랑·결혼 여부와 무관해.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="90">구분</th><th>🔴 보수적</th><th>🟡 중도적</th><th>🟢 진보적(자유주의)</th></tr>
+      <tr><td class="rlab">허용 조건</td><td>결혼 내에서만</td><td>사랑하는 관계면 OK</td><td>동의 + 해악 없으면 OK</td></tr>
+      <tr><td class="rlab">성의 목적</td><td>생식·사랑·결혼의 연결</td><td>사랑의 표현·완성</td><td>자기표현·자율성 실현</td></tr>
+      <tr><td class="rlab">핵심 가치</td><td>전통·책임·신성함</td><td>사랑·인격적 관계</td><td>자기결정권·자유·쾌락</td></tr>
+      <tr><td class="rlab">비판 받는 점</td><td>개인 자유 과도하게 제한</td><td>사랑의 기준 모호</td><td>관계의 책임·윤리 약화 가능</td></tr>
+    </table>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 성 상품화 문제</div>
+    <p>성의 상품화(포르노·성 산업)에 대해서도 비슷한 구도가 적용돼.</p>
+    <p><strong style="color:var(--text)">반대 논거:</strong> 인간을 성적 도구(수단)로 전락시킴. 칸트 관점 — 인간은 목적이어야 하는데 수단으로만 대함. 여성 인권 침해 가능성.</p>
+    <p><strong style="color:var(--text)">허용 논거:</strong> 성인 간 자발적 동의면 자기결정권 차원에서 허용 가능. 단, 착취·강요는 금지.</p>
+    <p>시험에서 칸트 관점을 적용해 성 상품화를 비판하는 선지가 자주 나와. "인간을 수단으로만 대한다" → 칸트 비판 논거.</p>
+  </div>
+
+  <div class="bin-box">
+    <div class="bin-head">🎯 빈출 선지 정오 판단 — 성윤리</div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">보수적 입장:</span> 성은 오직 결혼 안에서만 도덕적으로 허용된다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">진보적 입장:</span> 성적 자기결정권을 최우선으로 존중해야 한다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">중도 입장:</span> 사랑 없는 성관계는 인간의 존엄을 훼손한다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">칸트 적용:</span> 성의 상품화는 인간을 목적이 아닌 수단으로 대하는 것이다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">보수적 입장:</span> 결혼하지 않은 성인 간의 자발적 성관계도 도덕적으로 허용된다</div><div class="bin-o o-f">✗</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">진보적 입장:</span> 자발적 동의가 있다면 성 상품화도 도덕적으로 문제없다</div><div class="bin-o o-t">✓ (극단적 자유주의 논거)</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">보수·중도 공통:</span> 성은 인격적 관계와 결합되어야 한다</div><div class="bin-o o-t">✓</div></div>
+  </div>
+
+  <div class="odap-box">
+    <div class="odap-head">⚠️ 자주 틀리는 오답 유형 — 성윤리</div>
+    <div class="odap-item">
+      <div class="q">① 세 입장이 구분되지 않고 혼용되는 경우</div>
+      <div class="why">보수(결혼) / 중도(사랑) / 진보(동의) 이 세 입장을 명확히 구분해야 해. 특히 <strong>보수 vs 중도</strong>: 보수는 "결혼 안에서만", 중도는 "사랑 있으면 결혼 안 해도 OK"야. 시험에서 이 차이로 선지를 만들어.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">② "자기결정권"을 이유로 모든 게 허용된다는 오해</div>
+      <div class="why">진보적 성윤리도 <strong>타인에게 해를 끼치지 않는다</strong>는 조건이 있어. 동의 없는 행위, 미성년자 관련, 착취가 있는 경우는 자기결정권으로 정당화할 수 없어. "자기결정권이 있으면 무조건 OK" → 틀린 선지야.</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G3 ════ -->
+<div class="section" id="g3">
+  <div class="section-header">
+    <div class="section-num">SECTION 03 · 사회윤리</div>
+    <div class="section-title">사형제도 — <span class="g">응보 · 공리 · 인권</span></div>
+    <div class="section-desc">
+      형벌의 목적이 무엇이냐에 따라 사형에 대한 입장이 달라져.<br>
+      세 입장 모두 찬반 양쪽에 논거가 있어서 복잡해 보이지만, 구도만 파악하면 소거 가능.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 응보주의 — 정의로서의 형벌</div>
+    <p>응보주의는 형벌을 <strong style="color:var(--text)">죄에 대한 정당한 보복</strong>으로 봐. 칸트가 이 입장이야. "살인자를 처벌하지 않는 것은 오히려 정의에 어긋난다." 범죄자의 개선이나 사회 억제보다 <strong>죗값을 치르게 하는 것</strong>이 목적이야.</p>
+    <p>칸트는 극단적으로, "문명이 망해가는 사회라도 마지막 살인자는 처형해야 한다"고 말했어. 형벌은 결과와 무관하게 그 자체로 옳은 행위야.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 공리주의 — 결과에 따른 유동적 입장</div>
+    <p>공리주의는 형벌을 <strong style="color:var(--text)">범죄 억제 도구</strong>로 봐. 목적은 사회 전체의 안전과 행복이야. 따라서 사형이 범죄를 줄이는 효과가 있으면 찬성, 없으면 반대야.</p>
+    <p>현실 연구들은 사형의 범죄 억제 효과가 명확하지 않다는 결론이 많아. 이 근거로 공리주의자들이 사형 반대 논거를 들기도 해. 또한 오판으로 무고한 사람이 죽을 위험 — 이것도 공리주의적 반대 논거야.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 인권론 — 생명권의 절대성</div>
+    <p>인권론은 어떤 범죄자라도 <strong style="color:var(--text)">인간으로서 생명권을 가진다</strong>고 봐. 국가도 이 권리를 침해할 수 없어. 따라서 사형은 어떤 이유로도 허용 불가.</p>
+    <p>또 다른 인권론 논거: 오판 가능성. 사법 시스템이 완전하지 않아 무고한 사람이 처형될 수 있어. 돌이킬 수 없는 결과이므로 금지해야 해.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="90">구분</th><th>🔴 응보주의</th><th>🟡 공리주의</th><th>🔵 인권론</th></tr>
+      <tr><td class="rlab">형벌 목적</td><td>정의 실현<br>죄에 합당한 대가</td><td>범죄 억제<br>사회적 이익 극대화</td><td>생명권 보호<br>국가 권력 제한</td></tr>
+      <tr><td class="rlab">사형 입장</td><td><span class="hr">찬성</span><br>살인=사형이 정의</td><td>조건부<br>억제 효과 있으면 찬성<br>없으면 반대</td><td><span class="hg">반대</span><br>생명권 절대 불가침</td></tr>
+      <tr><td class="rlab">핵심 논거</td><td>"범죄자는 마땅한 벌을 받아야"</td><td>"사회 전체 안전에 기여하는가?"</td><td>"국가도 인간 생명을 빼앗을 수 없다"</td></tr>
+      <tr><td class="rlab">반대 논거</td><td>—</td><td>억제 효과 없으면 반대<br>오판 위험 → 반대</td><td>어떤 경우에도 반대</td></tr>
+    </table>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head">공리주의가 사형 찬반 양쪽에 쓰이는 이유</div>
+    <p><strong style="color:var(--y)">사형 찬성 논거 (공리주의):</strong> "사형 선고가 잠재적 살인자를 억제해서 사회 전체 안전이 높아진다 → 사회 전체 행복 증가 → 찬성"</p>
+    <p><strong style="color:var(--y)">사형 반대 논거 (공리주의):</strong> "연구에 따르면 사형은 범죄 억제 효과 없음. + 오판으로 무고한 사람 죽이면 사회 신뢰 저하 → 사회 전체 행복 감소 → 반대"</p>
+    <p style="color:var(--dimmer);font-size:12.5px;margin-top:8px">→ 공리주의자는 <strong>데이터가 바뀌면 입장도 바뀔 수 있어.</strong> 이게 응보주의·인권론과 다른 점. 시험에서 "공리주의 근거로 반대하는" 선지 자주 나와.</p>
+  </div>
+
+  <div class="bin-box">
+    <div class="bin-head">🎯 빈출 선지 정오 판단 — 사형제도</div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">응보주의:</span> 살인자에 대한 사형은 정의의 실현이다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">응보주의:</span> 범죄 억제 효과가 없어도 사형은 정당하다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">공리주의:</span> 사형의 범죄 억제 효과가 없다면 폐지해야 한다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">인권론:</span> 어떤 범죄자라도 생명권은 침해받을 수 없다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">응보주의:</span> 형벌의 주된 목적은 범죄 예방이다</div><div class="bin-o o-f">✗ (공리주의 목적)</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">공리주의:</span> 사형제도가 사회 안전에 기여한다면 도덕적으로 허용 가능하다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">칸트(응보주의) 관점:</span> 범죄자도 인간이므로 사형은 허용될 수 없다</div><div class="bin-o o-f">✗ (칸트는 사형 찬성)</div></div>
+  </div>
+
+  <div class="odap-box">
+    <div class="odap-head">⚠️ 자주 틀리는 오답 유형 — 사형제도</div>
+    <div class="odap-item">
+      <div class="q">① 칸트 = 사형 반대라고 오해</div>
+      <div class="why">칸트는 <strong>응보주의자이고 사형 찬성</strong>이야! 이게 반직관적이라서 자주 틀려. "인간의 존엄성"을 강조하는 칸트니까 반대할 것 같지만, 칸트는 오히려 "살인자를 처형하지 않는 것이 피해자 인격을 모독하는 것"이라고 봐. 의무론 관점에서 죗값을 치르게 하는 게 정의야.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">② 공리주의 = 사형 찬성으로 고정</div>
+      <div class="why">공리주의는 <strong>결과에 따라 입장이 달라져.</strong> 억제 효과 없으면 반대야. 시험에서 "공리주의 근거로 사형을 반대하는 입장"이 정답이 되는 경우 많아. "공리주의라서 찬성"이라고 단정하면 안 돼.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">③ 인권론과 생명 절대주의를 혼동</div>
+      <div class="why">인권론은 <strong>보편적 인권·생명권</strong>을 근거로 사형 반대. 생명 절대주의는 <strong>생명의 신성함·종교적 가치</strong>를 근거로 생명 침해 반대. 비슷해 보이지만 논거의 출처가 달라. 제시문에서 어떤 논거를 쓰는지 확인해야 해.</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G4 ════ -->
+<div class="section" id="g4">
+  <div class="section-header">
+    <div class="section-num">SECTION 04 · 환경윤리</div>
+    <div class="section-title">환경 윤리 — <span class="g">인간중심 · 동물중심 · 생태중심</span></div>
+    <div class="section-desc">
+      도덕적 고려 범위가 인간 → 동물 → 생태계 전체로 확장되는 흐름으로 이해하면 돼.<br>
+      "자연 보호의 이유"가 무엇이냐가 핵심 구분 기준이야.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 인간중심주의 — 자연은 인간을 위한 도구</div>
+    <p>자연을 보호하는 이유: <strong style="color:var(--text)">인간에게 유익하기 때문</strong>(도구적 가치). 자연 자체의 권리나 가치는 인정 안 해.</p>
+    <p>약한 인간중심주의: 미래 세대 인간을 위해 환경을 보전해야 한다. 여전히 인간 이익이 기준이지만 장기적 시각.</p>
+    <p>강한 인간중심주의: 현재 인간 이익을 위해 자연을 마음껏 개발해도 된다.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 동물중심주의 — 고통을 느끼는 존재까지 확장</div>
+    <p>피터 싱어의 공리주의 확장: <strong style="color:var(--text)">고통을 느끼는 능력</strong>이 도덕적 배려의 기준이야. 동물도 고통을 느끼므로 동등하게 고려해야 해. <strong style="color:var(--text)">종 차별주의(speciesism)</strong> 비판 — 인간이라는 이유만으로 특별 대우하는 건 차별이야.</p>
+    <p>톰 레건의 권리론: 동물도 삶의 주체로서 내재적 가치를 가져. 단순히 고통 계산이 아니라 동물도 권리가 있어.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 생태중심주의 — 생태계 전체의 내재적 가치</div>
+    <p>레오폴드의 <strong style="color:var(--text)">대지 윤리</strong>: 인간은 생태계(대지 공동체)의 지배자가 아니라 구성원 중 하나야. 식물·강·산·생태계 전체가 그 자체로 내재적 가치를 가져.</p>
+    <p>도덕적 고려 대상을 생태계 전체로 확장. "생태계의 통합성·안정성·아름다움을 보전하는 것이 옳다."</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="90">구분</th><th>🔵 인간중심주의</th><th>🟡 동물중심주의</th><th>🌿 생태중심주의</th></tr>
+      <tr><td class="rlab">고려 대상</td><td>인간만</td><td>고통 느끼는 동물까지</td><td>생태계 전체</td></tr>
+      <tr><td class="rlab">보호 이유</td><td>인간에게 유익함<br>(도구적 가치)</td><td>동물도 고통 받으므로</td><td>자연의 내재적 가치<br>(존재 자체가 이유)</td></tr>
+      <tr><td class="rlab">대표</td><td>인류 번영·지속가능 발전</td><td>싱어 (공리주의 확장)<br>레건 (동물 권리론)</td><td>레오폴드 (대지 윤리)</td></tr>
+      <tr><td class="rlab">특이점</td><td>약한 형태: 미래 세대 배려</td><td>종 차별주의 비판</td><td>인간은 생태계 구성원 중 하나</td></tr>
+    </table>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head">예시 — 아마존 열대우림 개발 논쟁</div>
+    <p><strong style="color:var(--b)">인간중심주의:</strong> "개발로 일자리·경제 발전 → 인간에게 좋아 → OK." 단, 미래 인간 위해 보전해야 한다는 것도 인간중심주의야.</p>
+    <p><strong style="color:var(--y)">동물중심주의:</strong> "아마존 동물들이 고통받잖아. 생태계 파괴로 수많은 동물이 죽어 → 반대."</p>
+    <p><strong style="color:var(--g)">생태중심주의:</strong> "아마존 자체가 고유한 가치를 가져. 인간에게 쓸모없어도 보전해야 해. 생태계는 그 자체로 존중받아야 해."</p>
+  </div>
+
+  <div class="bin-box">
+    <div class="bin-head">🎯 빈출 선지 정오 판단 — 환경윤리</div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">인간중심주의:</span> 자연은 인간의 필요를 충족하기 위한 수단이다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">동물중심주의:</span> 고통을 느끼는 능력이 도덕적 배려의 기준이다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">생태중심주의:</span> 모든 생명체는 그 자체로 내재적 가치를 지닌다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">생태중심주의:</span> 인간은 생태계의 지배자가 아니라 구성원 중 하나다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">인간중심주의:</span> 동물의 고통도 도덕적으로 고려해야 한다</div><div class="bin-o o-f">✗ (동물중심주의)</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">싱어(동물중심):</span> 인간과 동물을 구별하여 다루는 것은 차별이다</div><div class="bin-o o-t">✓ (종차별주의 비판)</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">인간·동물중심 공통:</span> 생태계의 통합성 자체가 도덕적 기준이다</div><div class="bin-o o-f">✗ (생태중심주의만)</div></div>
+  </div>
+
+  <div class="odap-box">
+    <div class="odap-head">⚠️ 자주 틀리는 오답 유형 — 환경윤리</div>
+    <div class="odap-item">
+      <div class="q">① 환경 보호를 주장하면 모두 생태중심주의라는 오해</div>
+      <div class="why">인간중심주의도 환경 보호를 주장할 수 있어. 다만 이유가 달라: <strong>"미래 인간을 위해"</strong>야. "왜 보호해야 하는가"의 논거가 다르면 다른 입장이야. 논거를 파악하는 게 핵심.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">② 싱어 = 생태중심주의로 오해</div>
+      <div class="why">싱어는 <strong>동물중심주의</strong>야. 고통을 느끼는 동물까지 확장한 거지, 식물이나 강·산까지는 아니야. 생태중심주의는 레오폴드의 대지 윤리처럼 생태계 전체를 고려해. 둘을 섞으면 안 돼.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">③ "내재적 가치"와 "도구적 가치" 혼동</div>
+      <div class="why"><strong>내재적 가치</strong>: 그 자체로 가치가 있음 (생태중심주의, 동물권리론). <strong>도구적 가치</strong>: 무언가에 유용해서 가치가 있음 (인간중심주의). 시험에서 이 두 개념으로 선지를 자주 만들어.</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G5 ════ -->
+<div class="section" id="g5">
+  <div class="section-header">
+    <div class="section-num">SECTION 05 · 정보윤리</div>
+    <div class="section-title">정보 윤리 — <span class="g">표현 자유 vs 규제</span></div>
+    <div class="section-desc">
+      디지털·AI 시대의 윤리 논쟁. 알 권리와 표현의 자유 vs 사생활 보호와 허위정보 규제가 충돌해.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 핵심 개념들</div>
+    <p><strong style="color:var(--text)">잊혀질 권리(Right to be Forgotten):</strong> 인터넷에 올라간 자신의 개인정보나 과거 기록을 삭제해달라고 요청할 권리. EU에서 법적으로 인정됨. 반면 삭제되면 알 권리 침해 논란.</p>
+    <p><strong style="color:var(--text)">디지털 격차(Digital Divide):</strong> IT 기술 접근성이 계층·세대·지역에 따라 달라 생기는 불평등. 정보 복지 논쟁으로 연결됨.</p>
+    <p><strong style="color:var(--text)">사이버 폭력·허위정보:</strong> 표현의 자유 vs 피해자 보호 충돌. 규제 강화하면 검열 위험, 완화하면 피해 확산.</p>
+    <p><strong style="color:var(--text)">저작권 vs 정보 공유:</strong> 창작자의 권리 보호 vs 정보의 자유로운 유통 및 공공 접근권.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="90">구분</th><th>🔵 표현 자유 중시</th><th>🔴 규제·사생활 중시</th></tr>
+      <tr><td class="rlab">핵심 가치</td><td>표현의 자유, 알 권리, 정보 공개</td><td>사생활 보호, 개인 존엄, 허위정보 차단</td></tr>
+      <tr><td class="rlab">잊혀질 권리</td><td>반대 — 공개 정보 삭제는 알 권리 침해</td><td>찬성 — 과거 기록에서 벗어날 권리 있음</td></tr>
+      <tr><td class="rlab">허위정보 규제</td><td>신중 — 정치적 검열로 악용 가능</td><td>필요 — 사회적 피해 예방 위해 규제 필요</td></tr>
+      <tr><td class="rlab">저작권</td><td>완화 — 정보의 자유로운 유통이 공공 이익</td><td>강화 — 창작자 권리 보호 필요</td></tr>
+      <tr><td class="rlab">근거</td><td>민주주의 기반은 자유로운 정보 유통</td><td>피해받는 개인의 존엄·인권 보호</td></tr>
+    </table>
+  </div>
+
+  <div class="bin-box">
+    <div class="bin-head">🎯 빈출 선지 정오 판단 — 정보윤리</div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">규제 입장:</span> 개인은 자신에 관한 정보를 삭제 요청할 권리가 있다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">자유 입장:</span> 정보의 자유로운 유통은 민주주의의 기반이다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">규제 입장:</span> 허위정보도 표현의 자유 영역으로 보호받아야 한다</div><div class="bin-o o-f">✗</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">디지털 격차:</span> 정보 접근성의 불평등은 사회 정의의 문제다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">저작권 강화:</span> 창작자의 노력에 대한 정당한 보상이 보장되어야 한다</div><div class="bin-o o-t">✓</div></div>
+  </div>
+
+  <div class="odap-box">
+    <div class="odap-head">⚠️ 자주 틀리는 오답 유형 — 정보윤리</div>
+    <div class="odap-item">
+      <div class="q">① 표현의 자유 = 모든 정보 공개가 허용된다는 오해</div>
+      <div class="why">표현의 자유도 한계가 있어. 타인의 명예훼손, 개인정보 침해, 국가 안보 관련 정보는 제한될 수 있어. "표현의 자유 중시 = 모든 정보 무조건 공개" → 과도한 단순화야.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">② 잊혀질 권리를 주장하면 무조건 정보 삭제가 가능하다는 오해</div>
+      <div class="why">잊혀질 권리도 조건이 있어. 공인의 공직 관련 정보, 역사적 사실, 공익적 정보는 삭제 요청이 거부될 수 있어. 사적 개인의 불필요한 정보에 주로 적용돼.</div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G6 ════ -->
+<div class="section" id="g6">
+  <div class="section-header">
+    <div class="section-num">SECTION 06 · 지구촌 윤리</div>
+    <div class="section-title">해외원조 · 통일 — <span class="g">싱어 vs 롤스</span></div>
+    <div class="section-desc">
+      부유한 나라는 가난한 나라를 얼마나, 왜 도와야 하는가?<br>
+      싱어와 롤스의 원조 의무 논쟁은 생윤 후반부 단골 출제 구도야.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 싱어 — 강한 원조 의무론</div>
+    <p>피터 싱어의 유명한 비유: <strong style="color:var(--text)">"연못에 빠지는 아이를 보면 신발 더러워질까봐 외면하겠어?"</strong> 아프리카에서 굶어 죽는 아이도 마찬가지야. 거리가 멀다는 건 도덕적으로 무관해.</p>
+    <p>따라서 여유가 있는 사람은 <strong style="color:var(--text)">고통 받는 사람을 도울 강한 도덕적 의무</strong>가 있어. 원조는 선택이 아니라 의무야. 자기 삶의 여유를 포기하더라도 도와야 해. 공리주의적 논거 — 고통 감소가 도덕적 의무.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 롤스 — 제한적 원조 의무</div>
+    <p>롤스는 다르게 봐. 빈곤의 원인이 단순히 자원 부족이 아니라 <strong style="color:var(--text)">그 나라의 정치·사회 구조 문제</strong>라는 거야. 따라서 원조의 목적은 돈을 주는 게 아니라 그 나라가 <strong style="color:var(--text)">질서 있는 사회(decent society)</strong>가 되도록 돕는 것.</p>
+    <p>일단 그 나라가 자립할 수 있는 구조가 갖춰지면 원조는 끝내도 돼. 무한정 퍼줄 의무는 없어. 싱어보다 훨씬 제한적인 원조 의무야.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="90">구분</th><th>🟡 싱어</th><th>🟢 롤스</th></tr>
+      <tr><td class="rlab">원조 의무</td><td>강한 의무 — 여유 있으면 반드시 도와야</td><td>제한적 의무 — 구조 개선 목적으로만</td></tr>
+      <tr><td class="rlab">원조 이유</td><td>고통 감소 (공리주의)</td><td>불리한 사회의 구조 개선</td></tr>
+      <tr><td class="rlab">원조 종료</td><td>세계 빈곤이 해결될 때까지</td><td>그 나라가 자립 가능한 구조가 되면</td></tr>
+      <tr><td class="rlab">국경의 의미</td><td>도덕적으로 무의미</td><td>국가 단위 책임이 기본</td></tr>
+      <tr><td class="rlab">원조 내용</td><td>즉각적 물질 지원도 포함</td><td>제도·구조 개선 중심</td></tr>
+    </table>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 통일 윤리 — 찬반 논거</div>
+    <p><strong style="color:var(--text)">통일 찬성 논거:</strong><br>
+    ① 민족적 당위성 — 같은 민족이니까 하나가 되어야 한다<br>
+    ② 이산가족 문제 해결 — 인도주의적 의무<br>
+    ③ 한반도 평화 안정 — 분단이 긴장의 원인<br>
+    ④ 경제적 시너지 — 북한 자원 + 남한 기술<br>
+    ⑤ 한국 국제적 위상 제고</p>
+    <p><strong style="color:var(--text)">통일 신중론 논거:</strong><br>
+    ① 엄청난 통일 비용<br>
+    ② 체제·문화 차이로 인한 사회 갈등<br>
+    ③ 현재 평화 공존으로도 충분하다는 현실론</p>
+  </div>
+
+  <div class="bin-box">
+    <div class="bin-head">🎯 빈출 선지 정오 판단 — 해외원조·통일</div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">싱어:</span> 부유한 국가는 절대적 빈곤 해소를 위해 원조할 강한 의무가 있다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">싱어:</span> 원조 의무는 물리적 거리와 무관하다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">롤스:</span> 원조는 빈곤국이 질서 있는 사회가 되도록 돕는 데 목적이 있다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">롤스:</span> 빈곤국이 자립 가능한 사회가 되면 원조를 계속할 의무는 없다</div><div class="bin-o o-t">✓</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">싱어:</span> 원조 의무는 자국민 우선 원칙보다 강하다</div><div class="bin-o o-t">✓ (싱어의 강한 입장)</div></div>
+    <div class="bin-row"><div class="bin-q"><span class="bold">롤스:</span> 원조는 세계 빈곤이 완전히 해소될 때까지 계속되어야 한다</div><div class="bin-o o-f">✗ (싱어 입장)</div></div>
+  </div>
+
+  <div class="odap-box">
+    <div class="odap-head">⚠️ 자주 틀리는 오답 유형 — 해외원조</div>
+    <div class="odap-item">
+      <div class="q">① 싱어와 롤스 모두 원조를 찬성하므로 같은 입장이라는 오해</div>
+      <div class="why">두 사람 모두 원조를 지지하지만 <strong>의무의 강도와 목적</strong>이 달라. 싱어는 "고통 감소를 위해 강한 의무", 롤스는 "구조 개선 목적으로 제한적 의무". 시험에서 이 차이가 선지로 나와.</div>
+    </div>
+    <div class="odap-item">
+      <div class="q">② 롤스의 원조론 = 국제 정의론(만민법)을 무시</div>
+      <div class="why">롤스는 <strong>만민법(Law of Peoples)</strong>에서 원조를 다뤄. 핵심은 "불리한 여건의 사회(burdened societies)가 자립 가능한 사회가 되도록 돕는 것"이야. 단순 물질 지원보다 제도·구조 지원이 중심이야.</div>
+    </div>
+  </div>
+
+  <div class="tip g" style="margin-top:32px;padding:18px 22px;font-size:14px">
+    <strong>DAY 2 마무리</strong><br>
+    생윤은 <strong>논거의 방향</strong>이 핵심이야. "왜 찬성/반대하는가"를 30초 안에 댈 수 있으면 OK.<br>
+    모르는 개념이 나와도 제시문에서 "이게 생명 절대주의 논거야? 자율성 논거야?" 같은 방식으로 분류하면 돼.
+  </div>
+</div>
+
+</main>
+
+<script>
+const sections = ['g1','g2','g3','g4','g5','g6'];
+const buttons = document.querySelectorAll('.anc-btn');
+function scrollTo(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const offset = document.querySelector('.sticky-nav').offsetHeight + 20;
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({top, behavior:'smooth'});
+}
+window.addEventListener('scroll', ()=>{
+  const navH = document.querySelector('.sticky-nav').offsetHeight;
+  let current = 0;
+  sections.forEach((id,i)=>{
+    const el = document.getElementById(id);
+    if(el && el.getBoundingClientRect().top <= navH + 80) current = i;
+  });
+  buttons.forEach((b,i)=>{
+    b.classList.toggle('active', i===current);
+  });
+});
+</script>
+</body>
+</html>
