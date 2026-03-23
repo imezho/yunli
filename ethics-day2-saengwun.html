@@ -102,6 +102,28 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
   .sticky-nav-inner{padding:0 20px;}
   .bin-row{grid-template-columns:1fr 60px;}
 }
+
+/* ── OX QUIZ ── */
+.quiz-zone{margin:28px 0 8px;border:1px solid var(--border2);border-radius:10px;overflow:hidden;}
+.quiz-header{padding:11px 18px;background:rgba(74,222,128,.07);border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px;}
+.quiz-header-text{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--g);}
+.quiz-score{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);}
+.q-card{padding:16px 20px;border-bottom:1px solid var(--border);}
+.q-card:last-child{border-bottom:none;}
+.q-meta{font-size:10px;color:var(--dimmer);margin-bottom:5px;font-family:'JetBrains Mono',monospace;}
+.q-text{font-size:13.5px;line-height:1.75;margin-bottom:12px;color:var(--text);}
+.q-btns{display:flex;gap:8px;}
+.q-btn{padding:6px 22px;border-radius:5px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--dim);font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;}
+.q-btn:not(:disabled):hover{color:var(--text);}
+.q-btn.o-btn:not(:disabled):hover,.q-btn.o-btn.sel{border-color:var(--g);background:rgba(74,222,128,.1);color:var(--g);}
+.q-btn.x-btn:not(:disabled):hover,.q-btn.x-btn.sel{border-color:var(--r);background:rgba(248,113,113,.1);color:var(--r);}
+.q-btn:disabled{opacity:.5;cursor:default;}
+.q-result{margin-top:10px;display:none;}
+.q-result.show{display:block;}
+.q-tag-ok{font-size:12px;color:var(--g);font-weight:700;}
+.q-tag-no{font-size:12px;color:var(--r);font-weight:700;}
+.q-exp{font-size:12.5px;color:var(--dim);line-height:1.75;padding:10px 14px;background:var(--surface);border-left:3px solid var(--r);border-radius:0 5px 5px 0;margin-top:6px;}
+
 </style>
 </head>
 <body>
@@ -125,6 +147,10 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     <button class="anc-btn">④ 환경윤리</button>
     <button class="anc-btn">⑤ 정보윤리</button>
     <button class="anc-btn">⑥ 해외원조·통일</button>
+    <button class="anc-btn">⑦ 동물윤리 심화</button>
+    <button class="anc-btn">⑧ 기업·직업 윤리</button>
+    <button class="anc-btn">⑨ AI·유전자 신유형</button>
+    <button class="anc-btn">⑩ 출제 비중표</button>
   </div>
 </div>
 
@@ -215,6 +241,71 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
       <div class="why">존엄사는 주로 소극적 안락사(연명치료 중단)를 가리키는 용어야. 적극적 안락사와 구분되는 개념으로 쓰이는 경우가 많아. 시험 제시문에서 어떤 의미로 쓰였는지 확인해야 해.</div>
     </div>
   </div>
+</div><div class="quiz-zone" id="qz-g1">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 생명윤리</span>
+    <span class="quiz-score" id="qs-g1">0 / 5</span>
+  </div>
+  <div class="q-card" data-qz="g1" data-idx="0" data-ans="X">
+    <div class="q-meta">G1-Q1 · 소극적·적극적 안락사 ★</div>
+    <div class="q-text">소극적 안락사와 적극적 안락사는 도덕적으로 동등하게 평가되어야 한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">소극적(연명치료 중단)은 한국에서도 법적으로 허용돼. 적극적(직접 유발)은 대부분 나라에서 불법. <strong>둘을 동등하게 묶으면 안 돼</strong>. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g1" data-idx="1" data-ans="O">
+    <div class="q-meta">G1-Q2 · 칸트 자살</div>
+    <div class="q-text">칸트는 자살이 인간을 수단으로만 대하는 행위이므로 도덕적으로 금지된다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">칸트의 자살 반대 논거: 자살은 보편 법칙이 될 수 없어(모두가 자살하면 인류 소멸). 또한 자기 자신을 목적이 아닌 수단으로 대하는 것. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g1" data-idx="2" data-ans="X">
+    <div class="q-meta">G1-Q3 · 공리주의 안락사</div>
+    <div class="q-text">공리주의는 어떤 경우에도 안락사를 찬성한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">공리주의는 <strong>결과에 따라 달라져</strong>. 고통 감소 효과 있으면 찬성이지만, 오남용으로 사회 불안 커지면 반대할 수도 있어. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g1" data-idx="3" data-ans="O">
+    <div class="q-meta">G1-Q4 · 생명절대 낙태</div>
+    <div class="q-text">생명 절대주의 입장에서 태아는 수정 순간부터 도덕적 지위를 가진다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">생명 절대주의: 수정 순간부터 생명 → 낙태는 살인. 종교적·보수적 관점에서 이 입장 지지. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g1" data-idx="4" data-ans="X">
+    <div class="q-meta">G1-Q5 · 존엄사</div>
+    <div class="q-text">한국에서 소극적 안락사(연명치료 중단)는 법적으로 허용되지 않는다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">한국은 <strong>2018년부터</strong> 회생 가능성 없는 환자의 연명치료 중단(소극적 안락사·존엄사)을 법적으로 허용하고 있어. → X</div>
+    </div>
+  </div>
 </div>
 
 <div class="div"></div>
@@ -274,6 +365,47 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     <div class="odap-item">
       <div class="q">② "자기결정권"을 이유로 모든 게 허용된다는 오해</div>
       <div class="why">진보적 성윤리도 <strong>타인에게 해를 끼치지 않는다</strong>는 조건이 있어. 동의 없는 행위, 미성년자 관련, 착취가 있는 경우는 자기결정권으로 정당화할 수 없어. "자기결정권이 있으면 무조건 OK" → 틀린 선지야.</div>
+    </div>
+  </div>
+</div><div class="quiz-zone" id="qz-g2">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 성윤리</span>
+    <span class="quiz-score" id="qs-g2">0 / 3</span>
+  </div>
+  <div class="q-card" data-qz="g2" data-idx="0" data-ans="X">
+    <div class="q-meta">G2-Q1 · 세 입장 구분</div>
+    <div class="q-text">보수적 성윤리는 결혼 여부와 관계없이 사랑이 있으면 성적 관계를 허용한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">사랑이 있으면 허용하는 건 <strong>중도적 입장</strong>이야. 보수적 입장은 오직 <strong>결혼 안에서만</strong> 허용해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g2" data-idx="1" data-ans="O">
+    <div class="q-meta">G2-Q2 · 칸트 성 상품화</div>
+    <div class="q-text">칸트의 관점에서 성의 상품화는 인간을 수단으로만 대하는 것이므로 비판받아야 한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">칸트: 인간은 목적이어야 해. 성을 사고파는 상품으로 취급하면 인간을 수단으로만 대하는 것. 칸트 관점 적용 비판 논거. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g2" data-idx="2" data-ans="X">
+    <div class="q-meta">G2-Q3 · 자기결정권 한계</div>
+    <div class="q-text">진보적 성윤리에서 자기결정권이 있으면 타인에게 해를 끼쳐도 모든 성적 행위가 허용된다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">진보적 성윤리도 <strong>타인에게 해를 끼치지 않는다</strong>는 조건이 있어. 동의 없는 행위, 미성년자 관련, 착취는 자기결정권으로 정당화 불가. → X</div>
     </div>
   </div>
 </div>
@@ -350,6 +482,59 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     <div class="odap-item">
       <div class="q">③ 인권론과 생명 절대주의를 혼동</div>
       <div class="why">인권론은 <strong>보편적 인권·생명권</strong>을 근거로 사형 반대. 생명 절대주의는 <strong>생명의 신성함·종교적 가치</strong>를 근거로 생명 침해 반대. 비슷해 보이지만 논거의 출처가 달라. 제시문에서 어떤 논거를 쓰는지 확인해야 해.</div>
+    </div>
+  </div>
+</div><div class="quiz-zone" id="qz-g3">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 사형제도</span>
+    <span class="quiz-score" id="qs-g3">0 / 4</span>
+  </div>
+  <div class="q-card" data-qz="g3" data-idx="0" data-ans="X">
+    <div class="q-meta">G3-Q1 · 칸트 사형 ★최빈출</div>
+    <div class="q-text">칸트는 인간 존엄성을 강조했으므로 사형제도에 반대하였다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">2025수능 오답률 높은 함정! 칸트는 <strong>응보주의자로 사형 찬성</strong>이야. "살인자를 처형하지 않는 것이 피해자 존엄을 모독한다"는 논리야. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g3" data-idx="1" data-ans="O">
+    <div class="q-meta">G3-Q2 · 공리주의 유동성</div>
+    <div class="q-text">공리주의는 사형의 범죄 억제 효과가 없다면 사형을 폐지해야 한다고 볼 수 있다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">공리주의는 결과 기준. 억제 효과 없으면 사회 이익에 기여 못 해 → 폐지. 공리주의가 사형 반대 논거로 쓰이는 게 바로 이거야. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g3" data-idx="2" data-ans="X">
+    <div class="q-meta">G3-Q3 · 응보주의 목적</div>
+    <div class="q-text">응보주의는 형벌의 주된 목적이 미래의 범죄를 예방하는 것이라고 본다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">형벌의 목적이 <strong>범죄 예방</strong>인 건 공리주의야. 응보주의는 형벌은 죄에 대한 <strong>정당한 대가(응보)</strong>이며 결과와 무관하게 정의 실현이 목적이야. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g3" data-idx="3" data-ans="O">
+    <div class="q-meta">G3-Q4 · 인권론 사형</div>
+    <div class="q-text">인권론은 어떤 범죄자라도 생명권을 가지므로 사형은 정당화될 수 없다고 본다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">인권론 핵심: 생명권은 국가도 침해할 수 없는 절대적 권리. 범죄자라도 인간이야. → O</div>
     </div>
   </div>
 </div>
@@ -429,6 +614,47 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
       <div class="why"><strong>내재적 가치</strong>: 그 자체로 가치가 있음 (생태중심주의, 동물권리론). <strong>도구적 가치</strong>: 무언가에 유용해서 가치가 있음 (인간중심주의). 시험에서 이 두 개념으로 선지를 자주 만들어.</div>
     </div>
   </div>
+</div><div class="quiz-zone" id="qz-g4">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 환경윤리</span>
+    <span class="quiz-score" id="qs-g4">0 / 3</span>
+  </div>
+  <div class="q-card" data-qz="g4" data-idx="0" data-ans="X">
+    <div class="q-meta">G4-Q1 · 인간중심주의 보전</div>
+    <div class="q-text">인간중심주의는 자연 보전의 이유가 없으므로 환경 보호를 반대한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">인간중심주의도 환경 보호를 지지해. 단, <strong>이유가 "인간을 위해서"</strong>야. 미래 세대 인간을 위한 보전은 인간중심주의 논거야. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g4" data-idx="1" data-ans="X">
+    <div class="q-meta">G4-Q2 · 싱어 종차별주의</div>
+    <div class="q-text">싱어는 고통을 느끼지 못하는 식물까지도 도덕적 배려의 대상으로 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">싱어는 <strong>고통을 느끼는 능력</strong>이 기준이야. 동물까지 확장한 것이지 식물까지는 아니야. 식물·생태계 전체까지 고려하는 건 생태중심주의(레오폴드). → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g4" data-idx="2" data-ans="X">
+    <div class="q-meta">G4-Q3 · 내재적 가치</div>
+    <div class="q-text">생태중심주의는 자연이 인간에게 유용하기 때문에 그 가치가 있다고 본다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">생태중심주의는 자연의 <strong>내재적 가치(그 자체의 가치)</strong>를 인정해. 인간에게 유용해서 가치 있다는 건 <strong>도구적 가치</strong> = 인간중심주의 논리야. → X</div>
+    </div>
+  </div>
 </div>
 
 <div class="div"></div>
@@ -480,6 +706,35 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     <div class="odap-item">
       <div class="q">② 잊혀질 권리를 주장하면 무조건 정보 삭제가 가능하다는 오해</div>
       <div class="why">잊혀질 권리도 조건이 있어. 공인의 공직 관련 정보, 역사적 사실, 공익적 정보는 삭제 요청이 거부될 수 있어. 사적 개인의 불필요한 정보에 주로 적용돼.</div>
+    </div>
+  </div>
+</div><div class="quiz-zone" id="qz-g5">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 정보윤리</span>
+    <span class="quiz-score" id="qs-g5">0 / 2</span>
+  </div>
+  <div class="q-card" data-qz="g5" data-idx="0" data-ans="X">
+    <div class="q-meta">G5-Q1 · 잊혀질 권리</div>
+    <div class="q-text">잊혀질 권리는 알 권리와 표현의 자유를 강화하기 위한 권리이다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">잊혀질 권리는 <strong>사생활 보호·개인 정보 삭제 요청</strong>을 위한 권리야. 알 권리·표현의 자유와는 오히려 충돌해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g5" data-idx="1" data-ans="O">
+    <div class="q-meta">G5-Q2 · 표현의 자유 한계</div>
+    <div class="q-text">표현의 자유를 중시하는 입장에서도 허위정보와 명예훼손은 규제될 수 있다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">표현의 자유도 절대적이지 않아. 타인 권리를 침해하는 허위정보·명예훼손은 제한 가능. "표현 자유=모든 것 허용"이 아니야. → O</div>
     </div>
   </div>
 </div>
@@ -561,6 +816,292 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     생윤은 <strong>논거의 방향</strong>이 핵심이야. "왜 찬성/반대하는가"를 30초 안에 댈 수 있으면 OK.<br>
     모르는 개념이 나와도 제시문에서 "이게 생명 절대주의 논거야? 자율성 논거야?" 같은 방식으로 분류하면 돼.
   </div>
+</div><div class="quiz-zone" id="qz-g6">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 해외원조·통일</span>
+    <span class="quiz-score" id="qs-g6">0 / 3</span>
+  </div>
+  <div class="q-card" data-qz="g6" data-idx="0" data-ans="O">
+    <div class="q-meta">G6-Q1 · 싱어 원조 의무</div>
+    <div class="q-text">싱어는 원조가 선택이 아닌 강한 도덕적 의무라고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">싱어: "여유 있는 사람은 고통 받는 사람을 도울 강한 도덕적 의무가 있어." 거리와 무관해. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g6" data-idx="1" data-ans="O">
+    <div class="q-meta">G6-Q2 · 롤스 원조 목적</div>
+    <div class="q-text">롤스는 빈곤국이 자립 가능한 사회가 되면 원조를 계속할 의무가 없다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">롤스의 제한적 원조 의무: 구조 개선 목적. 자립 가능한 구조가 갖춰지면 원조 종료 가능. 싱어와 다른 결정적 차이야. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="g6" data-idx="2" data-ans="X">
+    <div class="q-meta">G6-Q3 · 싱어·롤스 비교</div>
+    <div class="q-text">싱어와 롤스는 원조를 지지하는 입장이므로 원조 의무의 강도도 같다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">둘 다 원조 지지하지만 <strong>의무 강도와 목적이 달라</strong>. 싱어=강한 의무·고통 감소·국경 무관. 롤스=제한적 의무·구조 개선·자립하면 종료. → X</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="div"></div>
+
+<!-- ════ G7 동물윤리 심화 ════ -->
+<div class="section" id="g7">
+  <div class="section-header">
+    <div class="section-num">SECTION 07 · 생명윤리 심화</div>
+    <div class="section-title">동물 실험 · 먹조소프스 위해 논쟁</div>
+    <div class="section-desc">동물을 이용한 실험과 동물 복지 문제에서 생명 절대·자율성·공리주의 논거가 각각 다르게 작용해.</div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 동물 실험 찬반 논거</div>
+    <p><strong style="color:var(--text)">찬성 논거:</strong><br>
+    ① 공리주의: 동물 소수의 희생으로 다수 인간의 생명을 구할 수 있다면 사회 전체 이익 증가<br>
+    ② 인간중심주의: 인간의 생명·건강이 동물보다 우선<br>
+    ③ 현실적 대안 부재: 완전히 대체할 방법이 아직 없어</p>
+    <p><strong style="color:var(--text)">반대 논거:</strong><br>
+    ① 동물중심주의(싱어): 동물도 고통을 느끼므로 도덕적 배려 대상 — 종차별주의 비판<br>
+    ② 동물 권리론(레건): 동물도 삶의 주체로서 내재적 가치 → 수단으로 사용 불가<br>
+    ③ 대안 개발: 세포 배양·컴퓨터 시뮬레이션 등 대안 존재</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 먹는 것의 윤리 — 육식 vs 채식주의</div>
+    <p><strong style="color:var(--text)">육식 옹호 논거:</strong> 인간은 잡식 동물로 진화했어. 영양적 필요. 동물과 인간 사이엔 도덕적 지위 차이가 있어 (인간중심주의).</p>
+    <p><strong style="color:var(--text)">채식주의 논거:</strong><br>
+    ① 싱어: 고통 느끼는 동물을 불필요하게 고통받게 하는 것은 비윤리적<br>
+    ② 환경 윤리: 공장식 축산은 온실가스·환경 파괴<br>
+    ③ 세계 식량 문제: 육류 생산에 사용되는 곡물로 빈국 식량 해결 가능</p>
+  </div>
+
+  <div class="quiz-zone" id="qz-g7">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — 동물윤리 심화</span><span class="quiz-score" id="qs-g7">0 / 4</span></div>
+    <div class="q-card" data-qz="g7" data-idx="0" data-ans="O">
+      <div class="q-meta">G7-Q1 · 싱어 종차별주의</div>
+      <div class="q-text">싱어는 동물과 인간을 구별하여 다루는 것은 합리적 근거 없는 차별(종차별주의)이라고 비판하였다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">싱어: 고통을 느끼는 능력이 기준. 인간이라는 이유만으로 특별 대우하는 건 종차별주의(speciesism) — 인종차별과 유사한 형태의 차별이야. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="g7" data-idx="1" data-ans="O">
+      <div class="q-meta">G7-Q2 · 공리주의 동물실험</div>
+      <div class="q-text">공리주의 관점에서 동물 실험이 더 많은 인간의 생명을 구할 수 있다면 허용될 수 있다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">공리주의: 결과 기반. 동물 소수 희생으로 다수 인간 생명 구하면 사회 전체 쾌락 증가 → 허용 가능. → O (단, 싱어 자신은 반대)</div></div>
+    </div>
+    <div class="q-card" data-qz="g7" data-idx="2" data-ans="X">
+      <div class="q-meta">G7-Q3 · 레건 vs 싱어</div>
+      <div class="q-text">레건과 싱어는 동물 복지를 주장한다는 점에서 동일한 근거를 공유한다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">싱어=<strong>공리주의</strong> 확장(고통 계산 기반). 레건=<strong>권리론</strong>(동물도 삶의 주체로서 내재적 가치). 근거가 달라. 싱어는 동물의 고통 감소, 레건은 동물의 권리 그 자체가 목적. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="g7" data-idx="3" data-ans="O">
+      <div class="q-meta">G7-Q4 · 채식주의 환경 논거</div>
+      <div class="q-text">공장식 축산이 환경에 미치는 부정적 영향을 이유로 채식을 권장하는 것은 생태중심주의와 연결될 수 있다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">공장식 축산의 온실가스·생태계 파괴 문제 → 생태계 보전의 필요성 → 생태중심주의 논거와 연결 가능. → O</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G8 기업·직업 윤리 ════ -->
+<div class="section" id="g8">
+  <div class="section-header">
+    <div class="section-num">SECTION 08 · 사회윤리</div>
+    <div class="section-title">기업 윤리 · 직업 윤리</div>
+    <div class="section-desc">최근 출제 빈도 높아지는 파트. 기업의 사회적 책임과 직업 소명 의식이 핵심 주제야.</div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 기업의 사회적 책임 (CSR)</div>
+    <p><strong style="color:var(--text)">고전적 관점 (밀턴 프리드먼):</strong> 기업의 유일한 책임은 이익 극대화. 사회적 책임을 강요하면 주주의 권리 침해.</p>
+    <p><strong style="color:var(--text)">CSR 확장 관점:</strong> 기업은 경제적 책임(이익) → 법적 책임(준수) → 윤리적 책임(도덕) → 자선적 책임(사회공헌) 순으로 책임을 가져. (캐럴의 피라미드)</p>
+    <p><strong style="color:var(--text)">이해관계자 이론:</strong> 기업은 주주만이 아니라 직원·소비자·지역사회·환경 등 모든 이해관계자를 배려해야 해.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 직업 윤리 — 소명 의식·전문직 윤리</div>
+    <p><strong style="color:var(--text)">직업 소명 의식:</strong> 직업을 신으로부터 부여받은 소명(calling)으로 보는 관점. 막스 베버가 프로테스탄트 윤리에서 강조했어. 직업 수행 자체가 신성한 의무.</p>
+    <p><strong style="color:var(--text)">전문직 윤리:</strong> 의사·변호사·교사 등 전문직은 일반인이 검증하기 어려운 전문 지식을 가져 → 더 높은 윤리 기준과 사회적 책임이 요구돼.</p>
+    <p><strong style="color:var(--text)">노동 소외 (마르크스):</strong> 자본주의에서 노동자는 자신의 노동 결과물에서 소외돼. 노동이 삶의 수단이 아닌 자기실현의 과정이 되어야 해.</p>
+  </div>
+
+  <div class="quiz-zone" id="qz-g8">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — 기업·직업 윤리</span><span class="quiz-score" id="qs-g8">0 / 4</span></div>
+    <div class="q-card" data-qz="g8" data-idx="0" data-ans="X">
+      <div class="q-meta">G8-Q1 · 프리드먼 기업책임</div>
+      <div class="q-text">밀턴 프리드먼은 기업이 이익 극대화를 넘어 사회적 책임을 적극적으로 수행해야 한다고 주장하였다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">프리드먼의 고전적 관점은 정반대야. 기업의 <strong>유일한 책임은 이익 극대화</strong>이며, 사회적 책임 강요는 주주 권리 침해라고 봐. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="g8" data-idx="1" data-ans="O">
+      <div class="q-meta">G8-Q2 · 전문직 윤리</div>
+      <div class="q-text">전문직은 일반 직업보다 더 높은 윤리 기준이 요구되는데, 이는 전문 지식에 대한 비대칭성 때문이다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">의사·변호사 등 전문직은 일반인이 그 지식을 검증하기 어려워. 이 비대칭성 때문에 신뢰와 더 높은 윤리 기준이 필요해. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="g8" data-idx="2" data-ans="O">
+      <div class="q-meta">G8-Q3 · 직업 소명</div>
+      <div class="q-text">직업 소명 의식은 직업을 단순한 생계 수단이 아니라 사회와 신으로부터 부여받은 사명으로 여기는 관점이다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">직업 소명 의식(calling): 막스 베버의 프로테스탄트 윤리에서 강조. 직업 수행 자체가 신성한 의무이자 자기실현이야. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="g8" data-idx="3" data-ans="X">
+      <div class="q-meta">G8-Q4 · 마르크스 노동</div>
+      <div class="q-text">마르크스는 자본주의에서 노동자가 자신의 노동과 결과물에 완전히 일체감을 느끼며 자아를 실현한다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">마르크스의 노동 소외론: 자본주의에서 노동자는 자신의 노동 결과물에서 <strong>소외(疏外)</strong>돼. 노동이 자기실현이 아니라 생존 수단으로 전락했다는 게 비판의 핵심. → X</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G9 AI·유전자 신유형 ════ -->
+<div class="section" id="g9">
+  <div class="section-header">
+    <div class="section-num">SECTION 09 · 시사 적용 신유형</div>
+    <div class="section-title">인공지능 윤리 · 유전자 조작 · 기후 위기</div>
+    <div class="section-desc">최근 3~4년 신유형. 기존 윤리 이론을 현실 이슈에 적용하는 문제야. 이론보다 적용 논리가 중요해.</div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 인공지능 윤리</div>
+    <p><strong style="color:var(--text)">AI 책임 문제:</strong> AI가 사고를 일으켰을 때 누가 책임지나? 개발자·사용자·기업 등 책임 소재가 불분명해.</p>
+    <p><strong style="color:var(--text)">알고리즘 편향:</strong> AI 학습 데이터가 편향되면 결과도 편향돼. 특정 집단 차별 가능성.</p>
+    <p><strong style="color:var(--text)">자율 무기 시스템:</strong> 킬러 로봇이 스스로 적을 판단해 공격 — 전쟁 윤리·인간 존엄성 문제.</p>
+    <p><strong style="color:var(--y)">기존 이론 적용:</strong> 칸트(인간을 수단으로 대하지 말라 → AI가 인간을 수단화), 공리주의(AI가 사회 전체 행복 증가에 기여하면 허용), 인권론(AI로 인한 프라이버시 침해)</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 유전자 조작·생명공학 윤리</div>
+    <p><strong style="color:var(--text)">치료 목적 vs 강화 목적:</strong> 유전 질환 치료는 허용 논의 진행 중이지만, 지능·외모 등 능력 강화는 더 강한 윤리적 비판.</p>
+    <p><strong style="color:var(--text)">반대 논거:</strong><br>
+    ① 생명 존엄성: 인간의 유전적 정체성을 인위적으로 바꾸는 것은 인간 존엄 침해<br>
+    ② 불평등 심화: 부유층만 유전자 강화 가능 → 유전적 불평등 고착<br>
+    ③ 미래 세대 동의 없음: 태어나지 않은 사람의 유전자를 결정하는 것은 자율성 침해</p>
+    <p><strong style="color:var(--text)">찬성 논거:</strong><br>
+    ① 공리주의: 유전 질환 제거로 고통 감소, 사회 전체 행복 증가<br>
+    ② 자율성: 부모의 생식 선택권</p>
+  </div>
+
+  <div class="quiz-zone" id="qz-g9">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — AI·유전자 신유형</span><span class="quiz-score" id="qs-g9">0 / 4</span></div>
+    <div class="q-card" data-qz="g9" data-idx="0" data-ans="O">
+      <div class="q-meta">G9-Q1 · AI 칸트 적용</div>
+      <div class="q-text">칸트의 관점에서 AI가 인간의 결정을 대체하고 인간을 단순 데이터 제공자로만 취급하는 것은 비판받아야 한다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">칸트: 인간은 목적. AI가 인간을 단순 수단(데이터 제공자)으로만 대하면 인간 존엄 침해. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="g9" data-idx="1" data-ans="X">
+      <div class="q-meta">G9-Q2 · 유전자 조작 공리주의</div>
+      <div class="q-text">공리주의 관점에서 유전자 조작은 어떤 경우에도 허용될 수 없다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">공리주의는 결과 기준. 유전 질환 치료로 고통이 감소하고 사회 행복이 증가하면 <strong>허용 가능</strong>하다고 볼 수 있어. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="g9" data-idx="2" data-ans="O">
+      <div class="q-meta">G9-Q3 · 유전자 조작 불평등</div>
+      <div class="q-text">유전자 능력 강화(enhancement)가 허용되면 부유층만 접근 가능하여 사회 불평등이 심화될 수 있다는 것이 반대 논거 중 하나다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">유전자 강화 반대 논거 중 하나: 부유층만 이용 가능 → 유전적 불평등 고착 → 롤스 관점에서도 최소 수혜자에게 불리한 불평등. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="g9" data-idx="3" data-ans="X">
+      <div class="q-meta">G9-Q4 · AI 책임 소재</div>
+      <div class="q-text">AI가 자율적으로 결정을 내려 피해가 발생했을 때 AI 자체가 법적·도덕적 책임 주체가 된다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">현재 법·윤리 체계에서 AI는 법적·도덕적 책임 주체가 아니야. 책임은 개발자·운영자·사용자 등 <strong>인간</strong>에게 있어. 이게 AI 윤리의 핵심 과제 중 하나야. → X</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ G10 출제 비중표 ════ -->
+<div class="section" id="g10">
+  <div class="section-header">
+    <div class="section-num">SECTION 10 · 출제 데이터</div>
+    <div class="section-title">단원별 출제 비중표 &amp; 고난도 패턴</div>
+    <div class="section-desc">수능·모평·학평 기출 분석 기반. 생윤은 이론보다 논거 적용이 핵심이야.</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>단원</th><th>주요 주제</th><th>출제 빈도</th><th>난이도</th><th>전략</th></tr>
+      <tr><td class="rlab">생명윤리</td><td>안락사·낙태·자살·생명복제</td><td><span class="hg">★★★★★ 매년 필출</span></td><td>중</td><td>소극적·적극적 안락사 반드시 구분</td></tr>
+      <tr><td class="rlab">사형 논쟁</td><td>응보·공리·인권 3입장</td><td><span class="hg">★★★★☆</span></td><td>중~고</td><td>칸트=사형찬성 반직관 함정 주의</td></tr>
+      <tr><td class="rlab">분배 정의</td><td>롤스·노직 적용</td><td><span class="hg">★★★★☆</span></td><td>중~고</td><td>2025수능 오답률 11.5% — 차등원칙 심화</td></tr>
+      <tr><td class="rlab">환경윤리</td><td>인간중심·동물·생태중심</td><td><span class="hy">★★★☆☆</span></td><td>중</td><td>내재적 가치 vs 도구적 가치 구분</td></tr>
+      <tr><td class="rlab">성윤리</td><td>보수·중도·진보 3입장</td><td><span class="hy">★★★☆☆</span></td><td>하~중</td><td>3입장 허용 조건 명확히 구분</td></tr>
+      <tr><td class="rlab">해외원조</td><td>싱어 vs 롤스</td><td><span class="hy">★★★☆☆</span></td><td>중</td><td>의무 강도·목적 차이 포인트</td></tr>
+      <tr><td class="rlab">정보윤리</td><td>잊혀질 권리·허위정보 규제</td><td><span class="hb">★★☆☆☆</span></td><td>하~중</td><td>자유 vs 규제 방향성으로 소거</td></tr>
+      <tr><td class="rlab">기업·직업윤리</td><td>CSR·직업 소명·노동 소외</td><td><span class="hb">★★☆☆☆ 증가 추세</span></td><td>하~중</td><td>CSR 단계, 소명 의식 키워드</td></tr>
+      <tr><td class="rlab">AI·생명공학</td><td>AI 책임·유전자 조작</td><td><span class="hb">★★☆☆☆ 신유형</span></td><td>중</td><td>기존 이론 적용 논리 파악</td></tr>
+    </table>
+  </div>
+
+  <div class="ctx" style="margin-top:20px">
+    <div class="ctx-head">📌 생윤 고난도 패턴 TOP 4</div>
+    <p><strong style="color:var(--g)">① 칸트·공리주의 생윤 적용:</strong> 윤사 개념을 생윤 주제에 적용. "칸트 관점에서 안락사를 어떻게 보는가?" 유형 — 기존 이론의 논거를 현실 문제에 연결해.</p>
+    <p><strong style="color:var(--g)">② 정형화 탈피 신유형:</strong> 2025수능에서 "익숙한 주제에서 탈피한 문항 다수 출제." 결론보다 <strong>논거의 방향</strong>을 파악하는 게 핵심이야.</p>
+    <p><strong style="color:var(--g)">③ 분배 정의 도표 선지:</strong> 롤스·노직을 현실 정책(복지·세금)에 적용한 선지. 2025수능 15번 정답률 11.5% — 차등 원칙의 세부 조건 함정.</p>
+    <p><strong style="color:var(--g)">④ 합답형 선지 말장난:</strong> ㄱ·ㄴ이 확실해도 ㄷ·ㄹ에서 뒤집기. 각 선지를 독립적으로 O/X 판단해야 해.</p>
+  </div>
+</div>
+  <div class="quiz-zone" id="qz-g10">
+    <div class="quiz-header">
+      <span class="quiz-header-text">📝 OX 퀴즈 — 출제 경향 & 빈출 함정</span>
+      <span class="quiz-score" id="qs-g10">0 / 5</span>
+    </div>
+    <div class="q-card" data-qz="g10" data-idx="0" data-ans="X">
+      <div class="q-meta">G10-Q1 · 공리주의 사형제 — 빈출 함정</div>
+      <div class="q-text">공리주의는 사회 안전에 기여한다면 사형제를 찬성하므로, 공리주의 근거로 사형제를 반대하는 선지는 오답이다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no"></span><div class="q-exp">공리주의는 결과에 따라 달라져. 범죄 억제 효과가 없다면 공리주의 근거로 사형을 반대할 수 있어. 시험에서 "공리주의 근거로 사형 반대" 선지가 정답인 경우 자주 나와.</div></div>
+    </div>
+    <div class="q-card" data-qz="g10" data-idx="1" data-ans="O">
+      <div class="q-meta">G10-Q2 · 칸트 사형제 — 반직관 함정</div>
+      <div class="q-text">인간 존엄성을 강조한 칸트는 응보주의 관점에서 사형제에 찬성한다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-ok"></span><div class="q-exp"></div></div>
+    </div>
+    <div class="q-card" data-qz="g10" data-idx="2" data-ans="X">
+      <div class="q-meta">G10-Q3 · 싱어 vs 레오폴드 혼동</div>
+      <div class="q-text">피터 싱어는 생태계 전체가 내재적 가치를 지닌다는 생태중심주의를 주장하여 인간중심주의를 비판하였다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no"></span><div class="q-exp">싱어는 동물중심주의야. 고통을 느끼는 동물까지 도덕적 고려 범위를 확장했어. 생태중심주의(생태계 전체의 내재적 가치)는 레오폴드의 대지 윤리야.</div></div>
+    </div>
+    <div class="q-card" data-qz="g10" data-idx="3" data-ans="O">
+      <div class="q-meta">G10-Q4 · 롤스 원조 특징</div>
+      <div class="q-text">롤스는 원조의 목적이 빈곤국이 자립 가능한 사회가 되도록 돕는 것이므로, 그 목표가 달성되면 원조를 계속할 의무가 없다고 본다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-ok"></span><div class="q-exp"></div></div>
+    </div>
+    <div class="q-card" data-qz="g10" data-idx="4" data-ans="X">
+      <div class="q-meta">G10-Q5 · AI 윤리 신유형</div>
+      <div class="q-text">인공지능이 인간의 판단을 대신할 때, 칸트의 관점에서 AI의 결정에 무조건 복종하는 것은 자율적 이성을 포기하는 것이 아니므로 도덕적으로 문제없다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no"></span><div class="q-exp">칸트 관점에서 AI에 무조건 복종하는 건 인간의 자율적 이성(자유 의지)을 포기하는 거야. 칸트는 도덕적 행위가 반드시 자율적 이성에서 나와야 한다고 봐. AI 의존은 인간을 수동적 존재로 만들어 존엄성을 훼손해.</div></div>
+    </div>
+  </div>
+
 </div>
 
 </main>
@@ -569,7 +1110,7 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
 
 <script>
 (function(){
-  const IDS = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6'];
+  const IDS = ['g1','g2','g3','g4','g5','g6','g7','g8','g9','g10'];
   const btns = document.querySelectorAll('.anc-btn');
 
   // 버튼 클릭 → 해당 섹션으로 스크롤
@@ -606,6 +1147,37 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
   window.addEventListener('scroll', onScroll, {passive: true});
   onScroll(); // 초기 실행
 })();
+
+(function(){
+  window.checkQ = function(btn, ans){
+    var card = btn.closest('.q-card');
+    if(card.dataset.done) return;
+    var correct = card.dataset.ans;
+    card.dataset.done = '1';
+    card.querySelectorAll('.q-btn').forEach(function(b){ b.disabled=true; });
+    var result = card.querySelector('.q-result');
+    var tag = result.querySelector('.q-tag-ok,.q-tag-no');
+    var exp = result.querySelector('.q-exp');
+    if(ans === correct){
+      btn.classList.add('sel');
+      if(tag){ tag.className='q-tag-ok'; tag.textContent='✓ 정답!'; }
+      if(exp) exp.style.display='none';
+    } else {
+      btn.classList.add('sel');
+      var rightBtn = card.querySelector('.'+(correct==='O'?'o':'x')+'-btn');
+      if(rightBtn) rightBtn.classList.add('sel');
+      if(tag){ tag.className='q-tag-no'; tag.textContent='✗ 오답 — 해설 확인'; }
+      if(exp) exp.style.display='block';
+    }
+    result.classList.add('show');
+    var qz = card.dataset.qz;
+    var done = document.querySelectorAll('[data-qz="'+qz+'"][data-done]').length;
+    var total = document.querySelectorAll('[data-qz="'+qz+'"]').length;
+    var sc = document.getElementById('qs-'+qz);
+    if(sc) sc.textContent = done + ' / ' + total;
+  };
+})();
+
 </script>
 
 </body>

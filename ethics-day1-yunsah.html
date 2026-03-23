@@ -143,6 +143,28 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
   .sticky-nav-inner{padding:0 20px;}
   .bin-row{grid-template-columns:1fr 60px;}
 }
+
+/* ── OX QUIZ ── */
+.quiz-zone{margin:28px 0 8px;border:1px solid var(--border2);border-radius:10px;overflow:hidden;}
+.quiz-header{padding:11px 18px;background:rgba(245,200,66,.07);border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px;}
+.quiz-header-text{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--y);}
+.quiz-score{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim);}
+.q-card{padding:16px 20px;border-bottom:1px solid var(--border);}
+.q-card:last-child{border-bottom:none;}
+.q-meta{font-size:10px;color:var(--dimmer);margin-bottom:5px;font-family:'JetBrains Mono',monospace;}
+.q-text{font-size:13.5px;line-height:1.75;margin-bottom:12px;color:var(--text);}
+.q-btns{display:flex;gap:8px;}
+.q-btn{padding:6px 22px;border-radius:5px;border:1.5px solid var(--border2);background:var(--surface2);color:var(--dim);font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;}
+.q-btn:not(:disabled):hover{color:var(--text);}
+.q-btn.o-btn:not(:disabled):hover,.q-btn.o-btn.sel{border-color:var(--g);background:rgba(74,222,128,.1);color:var(--g);}
+.q-btn.x-btn:not(:disabled):hover,.q-btn.x-btn.sel{border-color:var(--r);background:rgba(248,113,113,.1);color:var(--r);}
+.q-btn:disabled{opacity:.5;cursor:default;}
+.q-result{margin-top:10px;display:none;}
+.q-result.show{display:block;}
+.q-tag-ok{font-size:12px;color:var(--g);font-weight:700;}
+.q-tag-no{font-size:12px;color:var(--r);font-weight:700;}
+.q-exp{font-size:12.5px;color:var(--dim);line-height:1.75;padding:10px 14px;background:var(--surface);border-left:3px solid var(--r);border-radius:0 5px 5px 0;margin-top:6px;}
+
 </style>
 </head>
 <body>
@@ -168,6 +190,12 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     <button class="anc-btn">④ 유가·도가·불교</button>
     <button class="anc-btn">⑤ 사회계약론</button>
     <button class="anc-btn">⑥ 자유주의 vs 공동체</button>
+    <button class="anc-btn">⑦ 이황 vs 이이</button>
+    <button class="anc-btn">⑧ 원효·지눌·정약용</button>
+    <button class="anc-btn">⑨ 주희·왕수인</button>
+    <button class="anc-btn">⑩ 고대·중세 서양</button>
+    <button class="anc-btn">⑪ 실존주의</button>
+    <button class="anc-btn">⑫ 출제 비중표</button>
   </div>
 </div>
 
@@ -261,6 +289,71 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
       <div class="why">칸트는 맞지만 흄은 아니야. 두 사람의 공통점을 고르라면 "도덕적 행동의 실천을 강조한다" 정도가 안전해. 이성/감정 관련 선지는 두 사람이 항상 갈려.</div>
     </div>
   </div>
+</div><div class="quiz-zone" id="qz-s1">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 이성 vs 감정</span>
+    <span class="quiz-score" id="qs-s1">0 / 5</span>
+  </div>
+  <div class="q-card" data-qz="s1" data-idx="0" data-ans="O">
+    <div class="q-meta">S1-Q1 · 칸트 핵심</div>
+    <div class="q-text">도덕적으로 옳은 행동은 결과와 무관하게 의무에서 비롯된 동기여야 한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">→ O가 맞아. 칸트의 정언명령: 행동의 도덕적 가치는 <strong>결과가 아닌 동기와 의무</strong>에 달려 있어.</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s1" data-idx="1" data-ans="X">
+    <div class="q-meta">S1-Q2 · 칸트 함정</div>
+    <div class="q-text">칸트는 감정에서 비롯된 행동은 어떤 경우에도 도덕적으로 옳지 않다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">감정에서 나온 행동도 의무와 결과적으로 일치하면 <strong>외적으로 옳을 수 있어</strong>. 단, 도덕적 <strong>가치</strong>를 갖지는 않아. "외적으로 옳다"≠"도덕적 가치가 있다". → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s1" data-idx="2" data-ans="X">
+    <div class="q-meta">S1-Q3 · 칸트 수단 함정</div>
+    <div class="q-text">칸트에 따르면 인간을 수단으로 이용하는 행위는 어떤 경우에도 허용되지 않는다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">칸트는 "<strong>수단으로만(merely)</strong> 대하지 말라"고 했어. 의사에게 치료받는 것처럼 수단으로 쓸 수는 있어. 단 동시에 목적으로도 대해야 해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s1" data-idx="3" data-ans="O">
+    <div class="q-meta">S1-Q4 · 흄 핵심</div>
+    <div class="q-text">흄은 이성이 아니라 공감(sympathy)이 도덕 판단의 출발점이라고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">흄의 핵심: "이성은 감정의 노예다." 타인 고통에 자연스럽게 불쌍한 마음 — 이게 도덕의 출발점이야. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s1" data-idx="4" data-ans="X">
+    <div class="q-meta">S1-Q5 · 흄 상대주의 함정</div>
+    <div class="q-text">흄은 감정이 도덕의 근거이므로 도덕은 사람마다 달라도 된다는 상대주의를 주장하였다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">흄은 인간이 <strong>보편적 공감 능력</strong>을 가진다고 봐서 공통된 도덕 감정이 가능하다고 생각했어. 감정 기반 ≠ 상대주의. → X</div>
+    </div>
+  </div>
 </div>
 
 <div class="div"></div>
@@ -350,6 +443,83 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
       <div class="why">칸트는 행복을 도덕의 기준으로 보지 않아. "행복하기 위해 행동하라"는 건 칸트 입장에서 조건부 명령(가언명령)이야. 도덕은 행복과 무관하게 이성이 명령하는 것.</div>
     </div>
   </div>
+</div><div class="quiz-zone" id="qz-s2">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 의무론 vs 결과론</span>
+    <span class="quiz-score" id="qs-s2">0 / 6</span>
+  </div>
+  <div class="q-card" data-qz="s2" data-idx="0" data-ans="X">
+    <div class="q-meta">S2-Q1 · 벤담·밀 구분 ★최빈출</div>
+    <div class="q-text">벤담과 밀은 모두 쾌락의 양과 질을 도덕 판단 기준으로 삼는다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">벤담=<strong>양(量)</strong> 기준, 밀=<strong>질(質)</strong> 추가. 벤담은 모든 쾌락이 동등하고 양으로만 비교해. 밀만 질적 우열을 주장해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s2" data-idx="1" data-ans="X">
+    <div class="q-meta">S2-Q2 · 2025수능 오답률 83.7% ★</div>
+    <div class="q-text">밀은 행복이 쾌락의 양을 증가시킴으로써 증진될 수 있다는 것에 동의하지 않는다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">2025수능 최다오답! 밀도 <strong>쾌락의 양적 증가가 행복에 기여함을 부정하지 않아</strong>. 벤담과 다른 점은 "질도 중요하다"는 것이지, 양을 완전히 부정하는 게 아니야. → X (밀도 동의함)</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s2" data-idx="2" data-ans="X">
+    <div class="q-meta">S2-Q3 · 칸트 소수 희생</div>
+    <div class="q-text">칸트는 다수의 행복을 위해 한 사람을 희생시키는 것도 도덕적으로 허용 가능하다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">칸트 핵심: "인간은 목적." 어떤 사람도 다수 이익을 위한 수단으로만 사용되어서는 안 돼. 공리주의와 결정적으로 다른 지점. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s2" data-idx="3" data-ans="X">
+    <div class="q-meta">S2-Q4 · 공리주의 오해</div>
+    <div class="q-text">공리주의는 자신의 행복만 극대화하는 이기주의와 같다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">공리주의는 <strong>사회 전체</strong>의 최대 행복을 추구해. "나를 포함한 모든 사람의 쾌락을 동등하게 계산"하는 것. 이기주의와 정반대야. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s2" data-idx="4" data-ans="O">
+    <div class="q-meta">S2-Q5 · 밀 거짓말</div>
+    <div class="q-text">밀은 거짓말이라도 더 많은 사람의 행복을 만들어낸다면 도덕적으로 허용될 수 있다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">공리주의(결과론) 핵심: 행동의 옳고 그름은 결과로 판단해. 거짓말이 더 큰 행복을 만들면 허용돼. 칸트(의무론)과 정반대야. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s2" data-idx="5" data-ans="O">
+    <div class="q-meta">S2-Q6 · 칸트 거짓말</div>
+    <div class="q-text">칸트는 거짓말로 친구의 생명을 구할 수 있어도 거짓말은 도덕적으로 허용될 수 없다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">칸트는 어떤 상황에서도 거짓말은 보편 법칙이 될 수 없어 → 금지. 결과가 좋아도 행위 자체가 의무 위반이면 안 돼. → O</div>
+    </div>
+  </div>
 </div>
 
 <div class="div"></div>
@@ -427,6 +597,71 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     <div class="odap-item">
       <div class="q">④ 롤스와 노직이 "사회 계약" 개념을 공유한다고 생각</div>
       <div class="why">롤스는 원초적 입장에서 계약하는 구조를 가져오지만, 노직은 사회계약론 방식을 쓰지 않아. 노직은 역사적 권리론 — "어떻게 얻었는가"의 과정이 중요해.</div>
+    </div>
+  </div>
+</div><div class="quiz-zone" id="qz-s3">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 롤스 vs 노직</span>
+    <span class="quiz-score" id="qs-s3">0 / 5</span>
+  </div>
+  <div class="q-card" data-qz="s3" data-idx="0" data-ans="X">
+    <div class="q-meta">S3-Q1 · 롤스 오해</div>
+    <div class="q-text">롤스는 사회의 모든 불평등을 제거해야 한다는 완전 평등주의를 주장하였다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">롤스의 <strong>차등 원칙</strong>: 불평등은 최소 수혜자에게 유리할 때 허용돼. 능력자가 더 많이 버는 것도 가난한 사람에게 이익이 되면 정의로워. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s3" data-idx="1" data-ans="O">
+    <div class="q-meta">S3-Q2 · 무지의 베일</div>
+    <div class="q-text">롤스의 무지의 베일 상태에서 합리적 인간은 최소 수혜자에게 유리한 원칙을 선택할 것이다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">내가 어떤 위치로 태어날지 모르는 상태 → 최악의 경우(최소 수혜자)에 유리한 규칙을 선택해 — 내가 그 위치일 수도 있으니까. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s3" data-idx="2" data-ans="O">
+    <div class="q-meta">S3-Q3 · 노직 소유권</div>
+    <div class="q-text">노직은 정당하게 취득한 재산에 과세하는 것은 소유권 침해라고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">노직 핵심: 내가 정당하게 번 돈을 국가가 세금으로 빼앗아 다른 사람에게 주는 건 강탈이야. 최소 국가만 정당해. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s3" data-idx="3" data-ans="X">
+    <div class="q-meta">S3-Q4 · 노직 불평등</div>
+    <div class="q-text">노직은 사회적 불평등 자체를 정당하다고 적극 지지하였다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">노직은 불평등을 찬성한 게 아니야. <strong>과정이 정당하면</strong> 어떤 결과도 정의롭다는 거야. 부당하게 얻은 것은 교정해야 해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s3" data-idx="4" data-ans="O">
+    <div class="q-meta">S3-Q5 · 공통점</div>
+    <div class="q-text">롤스와 노직은 개인의 기본적 자유가 보장되어야 한다는 것에 동의한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">둘 다 자유주의 계열. 롤스 제1원칙=기본적 자유 평등 보장, 노직도 개인 자유·권리 보호가 최우선. 재분배 방식에서만 갈려. → O</div>
     </div>
   </div>
 </div>
@@ -512,6 +747,83 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
       <div class="why">유가의 예는 단순한 예절 매너가 아니야. <strong>사회 질서를 유지하는 규범 체계</strong>야. 인(仁)이 내면적 도덕이라면, 예는 그것의 외적 표현이야. 인이 없는 예는 껍데기에 불과하다고 공자도 말했어.</div>
     </div>
   </div>
+</div><div class="quiz-zone" id="qz-s4">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 유가·도가·불교</span>
+    <span class="quiz-score" id="qs-s4">0 / 6</span>
+  </div>
+  <div class="q-card" data-qz="s4" data-idx="0" data-ans="X">
+    <div class="q-meta">S4-Q1 · 맹자 함정</div>
+    <div class="q-text">맹자는 인간이 선하게 태어나므로 수양이나 교육은 불필요하다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">환경·욕심에 의해 본성이 흐려질 수 있어. <strong>본성 회복을 위한 수양</strong>이 반드시 필요해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s4" data-idx="1" data-ans="X">
+    <div class="q-meta">S4-Q2 · 맹자·순자 공통점</div>
+    <div class="q-text">맹자와 순자는 인간 본성에 대한 입장이 달라 수양의 필요성에도 반대 견해를 가진다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">본성 입장은 반대(성선/성악)지만, <strong>수양이 필요하다는 결론은 같아</strong>. 이유만 다를 뿐. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s4" data-idx="2" data-ans="X">
+    <div class="q-meta">S4-Q3 · 도가 무위</div>
+    <div class="q-text">도가에서 무위(無爲)는 아무것도 하지 않고 게으르게 사는 것을 뜻한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">무위는 <strong>인위적이고 억지스러운 행동을 하지 않는다</strong>는 뜻. "무위이무불위" — 억지로 안 하면 못 이루는 것이 없어. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s4" data-idx="3" data-ans="O">
+    <div class="q-meta">S4-Q4 · 불교 연기</div>
+    <div class="q-text">불교에서는 모든 존재가 상호 의존적으로 연결되어 있어 독립적 자아는 없다고 본다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">연기(緣起): 모든 것은 조건에 의해 생겨나고 서로 연결돼. 무아(無我) 개념으로 이어져. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s4" data-idx="4" data-ans="X">
+    <div class="q-meta">S4-Q5 · 불교 현실</div>
+    <div class="q-text">불교는 현실 세계를 완전히 부정하고 현실에서 도피하라고 가르친다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">현실 자체가 아니라 현실에 대한 <strong>집착</strong>을 끊는 거야. 자비 실천도 현실에서 해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s4" data-idx="5" data-ans="X">
+    <div class="q-meta">S4-Q6 · 유가 vs 도가</div>
+    <div class="q-text">유가와 도가는 모두 현실 사회에 적극 참여하여 도덕 질서를 바로잡아야 한다고 주장한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">유가는 적극 참여, 도가는 인위적 개입 자체를 거부. 도가는 문명·제도가 오히려 자연을 해친다고 봐. → X</div>
+    </div>
+  </div>
 </div>
 
 <div class="div"></div>
@@ -576,6 +888,71 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     <div class="odap-item">
       <div class="q">③ 루소의 "일반의지" = 다수결이라는 오해</div>
       <div class="why">일반의지는 다수 의견이 아니야. <strong>공동체 전체의 공익을 지향하는 의지</strong>야. 다수가 개인 이익을 위해 투표하면 그건 일반의지가 아니야. "모든 이의 의지(다수결)"와 "일반의지"는 다른 개념이야.</div>
+    </div>
+  </div>
+</div><div class="quiz-zone" id="qz-s5">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 사회계약론</span>
+    <span class="quiz-score" id="qs-s5">0 / 5</span>
+  </div>
+  <div class="q-card" data-qz="s5" data-idx="0" data-ans="X">
+    <div class="q-meta">S5-Q1 · 홉스 저항권 함정</div>
+    <div class="q-text">홉스는 시민이 어떤 경우에도 주권자에게 저항할 수 없다고 주장하였다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">원칙적으로 부정하지만 <strong>주권자가 내 생명을 직접 위협할 때</strong>는 예외적으로 자기 보존을 위한 저항이 가능해. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s5" data-idx="1" data-ans="X">
+    <div class="q-meta">S5-Q2 · 루소 일반의지</div>
+    <div class="q-text">루소의 일반의지는 다수결로 결정된 다수의 의견과 같다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">일반의지는 공동체 전체의 <strong>공익을 지향하는 의지</strong>야. 다수가 각자 이익을 위해 투표하면 "모든 이의 의지"이지 일반의지가 아니야. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s5" data-idx="2" data-ans="X">
+    <div class="q-meta">S5-Q3 · 루소 자연상태</div>
+    <div class="q-text">루소는 자연 상태의 인간이 홉스처럼 전쟁 상태에 있다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">루소는 자연 상태를 <strong>자유롭고 평등한 선한 상태</strong>로 봐. 사유재산과 문명이 불평등을 만들었다는 거야. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s5" data-idx="3" data-ans="O">
+    <div class="q-meta">S5-Q4 · 공통 전제</div>
+    <div class="q-text">홉스·로크·루소는 모두 국가 권력의 정당성이 시민의 동의에서 나온다고 본다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">사회계약론의 공통 전제. 국가 권력은 신(神)이나 전통이 아닌 <strong>인민의 동의</strong>에서 나온다. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s5" data-idx="4" data-ans="O">
+    <div class="q-meta">S5-Q5 · 로크 저항권</div>
+    <div class="q-text">로크는 정부가 자연권을 침해하면 시민이 저항·혁명을 할 수 있다고 보았다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">로크의 신탁이론: 위탁을 위반하면 국민은 저항권·혁명권 행사 가능. 미국 독립선언문에 직접 영향. → O</div>
     </div>
   </div>
 </div>
@@ -654,6 +1031,529 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
     6개 구도 완료. 각 구도에서 "이 입장은 이 선지에 동의할까?"를 1분 안에 판단할 수 있으면 충분해.<br>
     학자 이름 몰라도 방향성만 기억하면 선지 소거 가능. 내일 생윤에서 의무론·공리주의·롤스가 다시 나오니까 오늘 내용 연결돼.
   </div>
+</div><div class="quiz-zone" id="qz-s6">
+  <div class="quiz-header">
+    <span class="quiz-header-text">📝 OX 퀴즈 — 자유주의 vs 공동체주의</span>
+    <span class="quiz-score" id="qs-s6">0 / 5</span>
+  </div>
+  <div class="q-card" data-qz="s6" data-idx="0" data-ans="X">
+    <div class="q-meta">S6-Q1 · 공동체주의 오해</div>
+    <div class="q-text">공동체주의는 개인을 국가에 완전히 종속시키는 전체주의를 지지한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">개인과 공동체의 <strong>상호 의존</strong>을 강조하는 거야. 개인 권리를 부정하는 전체주의와는 달라. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s6" data-idx="1" data-ans="O">
+    <div class="q-meta">S6-Q2 · 연고적 자아</div>
+    <div class="q-text">공동체주의의 연고적 자아는 개인의 정체성이 공동체 속에서 형성된다는 의미다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">연고(緣故): 가족·국가·문화·전통 안에 태어나 그 속에서 정체성 형성. "공동체 없는 나"는 추상적 허구. → O</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s6" data-idx="2" data-ans="X">
+    <div class="q-meta">S6-Q3 · 자유주의 국가</div>
+    <div class="q-text">자유주의는 국가가 시민들에게 특정 가치관이나 삶의 방식을 장려해야 한다고 주장한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">자유주의는 <strong>국가 중립성</strong>을 강조해. 국가는 특정 가치관을 강요하거나 장려하면 안 돼. 공동체주의와 핵심 차이. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s6" data-idx="3" data-ans="X">
+    <div class="q-meta">S6-Q4 · 연고 범위</div>
+    <div class="q-text">공동체주의의 연고적 자아에서 공동체는 주로 가족을 의미한다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">연고는 가족만이 아니야. 국가·민족·종교·문화·지역 공동체 전부 포함. → X</div>
+    </div>
+  </div>
+  <div class="q-card" data-qz="s6" data-idx="4" data-ans="O">
+    <div class="q-meta">S6-Q5 · 의무 근거</div>
+    <div class="q-text">공동체주의는 자발적 동의 없이도 공동체에 대한 의무를 질 수 있다고 본다.</div>
+    <div class="q-btns">
+      <button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button>
+      <button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button>
+    </div>
+    <div class="q-result">
+      <span class="q-tag-no">✗ 오답</span>
+      <div class="q-exp" style="display:none">국가·민족에 대한 의무는 자발적 계약 없이도 태어나면서 지는 연고적 의무야. 자유주의는 자발적 동의에 의한 의무만 인정하는 것과 대비. → O</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="div"></div>
+
+<!-- ════ S7 이황 vs 이이 ════ -->
+<div class="section" id="s7">
+  <div class="section-header">
+    <div class="section-num">SECTION 07 · 한국 성리학</div>
+    <div class="section-title">이황 vs 이이 — <span class="y">이기론 · 사단칠정</span></div>
+    <div class="section-desc">
+      윤사 킬러 단골. 이기론과 사단칠정론에서 이황·이이의 입장 차이가 매년 출제돼.<br>
+      핵심은 <strong style="color:var(--text)">이(理)가 발동하느냐 마느냐</strong> — 이호발설(이황) vs 기발이승일도설(이이).
+    </div>
+  </div>
+
+  <div class="intro-box">
+    <strong>이(理)</strong> = 우주 만물의 근원 원리·법칙 (도덕의 근거, 형태 없음)<br>
+    <strong>기(氣)</strong> = 만물을 구성하는 물질적 요소 (운동성 있음, 형태 있음)<br>
+    이와 기는 "서로 떨어질 수 없으나(不相離), 서로 섞이지도 않는다(不相雜)" — 이것이 공통 전제야.
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 이황(퇴계) — 이기호발설(理氣互發說) · 주리론</div>
+    <p>이황은 이(理)가 <strong style="color:var(--text)">능동적으로 발동할 수 있다</strong>고 봐. 이와 기가 각각 독자적으로 발할 수 있어.</p>
+    <p><strong style="color:var(--y)">사단칠정 분리:</strong> 사단(四端 — 측은·수오·사양·시비)은 이(理)가 발한 것, 칠정(七情)은 기(氣)가 발한 것. 둘을 이와 기에 나누어 분속할 수 있어.</p>
+    <p>이(理)는 순수하고 선하며 형태·작용이 없다(無形無爲)는 주희의 입장과 달리, 이황은 이에 능동성을 부여한 게 특징이야.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 이이(율곡) — 기발이승일도설(氣發理乘一途說) · 주기론</div>
+    <p>이이는 <strong style="color:var(--text)">기(氣)만이 발동</strong>하고, 이(理)는 그 기를 탈 뿐이라고 봐. 이는 무형·무위(無爲)해서 스스로 발동 못 해. 발동은 기(氣)가 담당해.</p>
+    <p><strong style="color:var(--y)">사단칠정 통합:</strong> 사단과 칠정은 모두 기가 발한 것이야. 사단은 칠정 중 도덕적으로 선한 측면이지, 별도의 다른 감정이 아니야. 칠정이 사단을 포함(칠정포사단)해.</p>
+    <p>이기불상리(이와 기는 떨어질 수 없음)를 더 강조해서, 이와 기를 두 물건처럼 분리하는 이황의 관점을 비판했어.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="120">구분</th><th>🔴 이황 (주리론)</th><th>🔵 이이 (주기론)</th></tr>
+      <tr><td class="rlab">이(理)의 능동성</td><td><span class="hy">이(理)도 발동 가능</span><br>이기호발설(理氣互發說)</td><td><span class="hb">이(理)는 무위, 발동 못 함</span><br>기발이승일도설(氣發理乘)</td></tr>
+      <tr><td class="rlab">사단의 근거</td><td>이(理)가 발한 것</td><td>기(氣)가 발한 것 (칠정의 선한 측면)</td></tr>
+      <tr><td class="rlab">칠정과의 관계</td><td>사단(이 발) ≠ 칠정(기 발) — 분리</td><td>칠정이 사단을 포함 (칠정포사단)</td></tr>
+      <tr><td class="rlab">이기 관계 강조</td><td>이기불상잡(不相雜) 강조 — 구별</td><td>이기불상리(不相離) 강조 — 통합</td></tr>
+      <tr><td class="rlab">이(理)의 성격</td><td>능동적·자발적 실재</td><td>무형·무위·형이상학적 원리</td></tr>
+      <tr><td class="rlab">학파</td><td>퇴계학파 (주리파)</td><td>율곡학파 (주기파)</td></tr>
+    </table>
+  </div>
+
+  <div class="ex">
+    <div class="ex-head">시험에서 이황·이이 구분 핵심 포인트</div>
+    <p><strong style="color:var(--y)">이황만 동의:</strong> "이(理)가 스스로 발동할 수 있다" / "사단과 칠정은 이와 기에 각각 분속된다" / "이기호발"</p>
+    <p><strong style="color:var(--y)">이이만 동의:</strong> "발동은 오직 기(氣)만 한다" / "사단은 칠정 안에 포함된다" / "기발이승" / "이는 무위(無爲)다"</p>
+    <p><strong style="color:var(--text)">둘 다 동의:</strong> "이와 기는 서로 떨어질 수 없다(불상리)" / "이는 순수하게 선하다" / "수양이 필요하다"</p>
+  </div>
+
+  <div class="tip y">
+    <strong>🎯 자주 나오는 함정 선지</strong><br>
+    • "이황은 이와 기를 별개의 독립적인 실체로 본다" → <span class="hr">과도한 해석, 틀림</span> (이황도 이기불상리 인정)<br>
+    • "이이는 사단이 이(理)에서만 발현된다고 본다" → <span class="hr">틀림</span> (기발이승일도설)<br>
+    • "이황과 이이 모두 이(理)의 능동성을 인정한다" → <span class="hr">틀림</span> (이이는 이의 무위 강조)
+  </div>
+
+  <div class="quiz-zone" id="qz-s7">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — 이황 vs 이이</span><span class="quiz-score" id="qs-s7">0 / 5</span></div>
+    <div class="q-card" data-qz="s7" data-idx="0" data-ans="O">
+      <div class="q-meta">S7-Q1 · 이황 이호발설</div>
+      <div class="q-text">이황은 이(理)와 기(氣)가 각각 독자적으로 발동할 수 있다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">이황의 이기호발설(理氣互發說): 이와 기가 서로 번갈아 발동할 수 있어. 이(理)의 능동성을 인정하는 게 이황의 핵심. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s7" data-idx="1" data-ans="X">
+      <div class="q-meta">S7-Q2 · 이이 사단</div>
+      <div class="q-text">이이는 사단(四端)이 이(理)에서만 직접 발현되므로 칠정(七情)과는 다른 별개의 감정이라고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">이이(기발이승일도설): 사단도 기(氣)가 발한 것이야. 칠정 안에 사단이 포함돼(칠정포사단). 사단과 칠정이 별개의 발원이라는 건 이황의 입장. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s7" data-idx="2" data-ans="X">
+      <div class="q-meta">S7-Q3 · 이이 이(理)</div>
+      <div class="q-text">이이는 이(理)가 능동적으로 발동하여 사람의 도덕 실천을 이끈다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">이이에서 이(理)는 무형·무위(無爲)야. 발동하는 건 기(氣)이고 이는 기를 탈 뿐이야. 이의 능동성은 이황의 주장. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s7" data-idx="3" data-ans="O">
+      <div class="q-meta">S7-Q4 · 공통점</div>
+      <div class="q-text">이황과 이이는 모두 이(理)는 순수하게 선하다는 것에 동의한다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">성리학의 공통 전제. 이(理)는 순수하게 선해. 악은 기(氣)가 탁해지거나 치우쳐서 생겨나는 거야. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s7" data-idx="4" data-ans="O">
+      <div class="q-meta">S7-Q5 · 이황 이기 관계</div>
+      <div class="q-text">이황은 이(理)와 기(氣)가 서로 섞이지 않는다(不相雜)는 측면을 강조하였다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">이황은 이기불상잡(不相雜 — 섞이지 않는다)을 강조해서 이와 기를 구별하려 했어. 이이는 이기불상리(떨어질 수 없다)를 강조해서 통합적으로 봐. → O</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ S8 원효·지눌·정약용 ════ -->
+<div class="section" id="s8">
+  <div class="section-header">
+    <div class="section-num">SECTION 08 · 한국 불교·실학</div>
+    <div class="section-title">원효 · 지눌 · 정약용</div>
+    <div class="section-desc">
+      원효·지눌은 최근 킬러 파트로 부상. 정약용 실학도 단독 출제 빈도 높아지는 중이야.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 원효 — 화쟁(和諍)·일심(一心)</div>
+    <p><strong style="color:var(--text)">화쟁(和諍):</strong> 서로 다른 불교 종파들의 논쟁을 하나로 회통시키는 사상. "모든 주장은 일심(一心)에서 나왔으므로 서로 다투지 않는다."</p>
+    <p><strong style="color:var(--text)">일심이문(一心二門):</strong> 진여문(眞如門, 고요하고 청정한 측면)과 생멸문(生滅門, 현상적·변화하는 측면)이 하나의 마음(一心)에 함께 있어. 깨달음은 이 일심을 회복하는 것.</p>
+    <p><strong style="color:var(--y)">핵심 키워드:</strong> 화쟁 / 일심 / 회통 / 종파 통합</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 지눌 — 정혜쌍수(定慧雙修)·돈오점수(頓悟漸修)</div>
+    <p><strong style="color:var(--text)">돈오점수(頓悟漸修):</strong> 단박에 깨달음(돈오)을 얻되, 이후에도 꾸준히 수행(점수)을 해야 해. 깨달음이 완성되려면 지속적 수행이 필요해.</p>
+    <p><strong style="color:var(--text)">정혜쌍수(定慧雙修):</strong> 선정(定, 마음을 고요히 함)과 지혜(慧, 사물의 이치를 앎)를 함께 닦아야 해. 지눌에서 선정은 마음의 <strong>본체</strong>이고 지혜는 마음의 <strong>작용</strong>이야.</p>
+    <p><strong style="color:var(--text)">간화선(看話禪):</strong> 화두(話頭)를 집중해서 관찰하는 수행법. 지눌은 이를 고려 불교의 수행 방법으로 강조했어.</p>
+    <p><strong style="color:var(--y)">주의!</strong> 시험 함정: "정은 마음의 본체이고 혜는 마음의 작용이다" → 지눌 O. "혜가 본체이고 정이 작용" → 틀림.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 정약용 — 실학·인의예지는 덕목이 아닌 실천</div>
+    <p><strong style="color:var(--text)">성기호설(性嗜好說):</strong> 인간의 본성은 선을 좋아하고 악을 싫어하는 <strong>기호(嗜好, 좋아하고 싫어함)</strong>야. 주자학에서 본성=이(理)로 본 것과 달리, 정약용은 본성을 기호(성향)로 봤어.</p>
+    <p><strong style="color:var(--text)">인의예지는 행위의 결과:</strong> 주자학에서 인의예지는 타고난 덕목이지만, 정약용은 측은·수오·사양·시비의 <strong>실천 행위를 통해 얻어지는 결과</strong>가 인의예지라고 봐. 선험적으로 주어진 게 아니야.</p>
+    <p><strong style="color:var(--y)">핵심 키워드:</strong> 실학 / 성기호설 / 인의예지=실천의 결과 / 자주지권(스스로 선악 선택 가능)</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="100">구분</th><th>원효</th><th>지눌</th><th>정약용</th></tr>
+      <tr><td class="rlab">핵심 개념</td><td>화쟁·일심·회통</td><td>돈오점수·정혜쌍수·간화선</td><td>성기호설·실학·인의예지=실천</td></tr>
+      <tr><td class="rlab">특징</td><td>종파 통합, 불교 대중화</td><td>단박 깨달음 후 지속 수행</td><td>유학 재해석, 사회 개혁</td></tr>
+      <tr><td class="rlab">키 선지</td><td>"화두를 활용한다" → X (지눌)<br>"회통으로 쟁론 해결" → O</td><td>"정은 본체, 혜는 작용" → O<br>"깨달음 후 수행 불필요" → X</td><td>"인의예지는 덕의 실천 결과" → O<br>"인의예지는 타고난 본성" → X</td></tr>
+    </table>
+  </div>
+
+  <div class="quiz-zone" id="qz-s8">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — 원효·지눌·정약용</span><span class="quiz-score" id="qs-s8">0 / 5</span></div>
+    <div class="q-card" data-qz="s8" data-idx="0" data-ans="X">
+      <div class="q-meta">S8-Q1 · 지눌 정혜 함정 ★킬러빈출</div>
+      <div class="q-text">지눌은 참마음의 본체는 지혜(慧)이고, 참마음의 작용은 선정(定)이라고 주장하였다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">반대야. 지눌에서 <strong>선정(定)이 본체</strong>이고 <strong>지혜(慧)가 작용</strong>이야. 수능 기출에서 이걸 뒤집어서 함정으로 냈어. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s8" data-idx="1" data-ans="X">
+      <div class="q-meta">S8-Q2 · 지눌 돈오점수</div>
+      <div class="q-text">지눌은 단박에 깨달음을 얻으면 이후 별도의 수행이 필요 없다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">돈오점수(頓悟漸修): 단박 깨달음(돈오) 이후에도 <strong>꾸준한 수행(점수)</strong>이 필요해. 깨달음으로 끝이 아니야. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s8" data-idx="2" data-ans="O">
+      <div class="q-meta">S8-Q3 · 원효 화쟁</div>
+      <div class="q-text">원효는 서로 대립하는 불교 종파들의 주장을 일심(一心)을 기반으로 회통시키고자 하였다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">원효의 화쟁(和諍): 모든 주장이 일심에서 나왔으므로 서로 다투지 않고 회통할 수 있어. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s8" data-idx="3" data-ans="X">
+      <div class="q-meta">S8-Q4 · 정약용 인의예지</div>
+      <div class="q-text">정약용은 인의예지(仁義禮智)가 인간에게 선험적으로 주어진 타고난 본성이라고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">정약용은 인의예지가 타고난 덕목이 아니라 <strong>측은·수오·사양·시비의 실천 행위를 통해 얻어지는 결과</strong>라고 봐. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s8" data-idx="4" data-ans="O">
+      <div class="q-meta">S8-Q5 · 정약용 성기호설</div>
+      <div class="q-text">정약용은 인간의 본성을 이(理)가 아니라 선을 좋아하고 악을 싫어하는 기호(嗜好)로 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">성기호설(性嗜好說): 본성=선을 좋아하고 악을 싫어하는 기호·성향. 주자학에서 본성=이(理)로 본 것과 달라. → O</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ S9 주희·왕수인 ════ -->
+<div class="section" id="s9">
+  <div class="section-header">
+    <div class="section-num">SECTION 09 · 중국 성리학 vs 양명학</div>
+    <div class="section-title">주희(성리학) vs 왕수인(양명학)</div>
+    <div class="section-desc">
+      기출에서 매년 1문제 이상 출제. "선지식 후도덕이냐, 지행합일이냐"가 핵심 구분이야.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 주희(朱熹) — 성리학, 格物致知</div>
+    <p><strong style="color:var(--text)">격물치지(格物致知):</strong> 사물의 이치(理)를 탐구해서(格物) 앎에 이른다(致知). 먼저 <strong>知(앎)</strong>가 있어야 그 다음에 <strong>行(실천)</strong>이 가능해. → 선지후행(先知後行)</p>
+    <p><strong style="color:var(--text)">거경(居敬)·궁리(窮理):</strong> 마음을 경건하게 유지하면서 이치를 탐구하는 수양 방법.</p>
+    <p>이(理)는 사물 밖에도 있고 마음 안에도 있어. 마음과 이(理)가 별개야(성즉리, 性卽理).</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 왕수인(왕양명) — 양명학, 心卽理·知行合一</div>
+    <p><strong style="color:var(--text)">심즉리(心卽理):</strong> 마음이 곧 이(理)야. 이치는 마음 바깥에 있는 게 아니라 내 마음 안에 있어. 사물 밖에서 이치를 탐구할 필요가 없어.</p>
+    <p><strong style="color:var(--text)">지행합일(知行合一):</strong> 앎과 실천은 하나야. 진정으로 안다면 동시에 실천하게 돼. 주희의 선지후행에 반대해.</p>
+    <p><strong style="color:var(--text)">치양지(致良知):</strong> 양지(良知, 타고난 도덕 지식)를 최대한 발휘하는 것이 수양. 누구나 양지를 가지고 있어.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="100">구분</th><th>🔴 주희 (성리학)</th><th>🔵 왕수인 (양명학)</th></tr>
+      <tr><td class="rlab">이(理)의 위치</td><td>사물 안에도, 마음 안에도 있음</td><td><span class="hb">마음이 곧 이(心卽理)</span></td></tr>
+      <tr><td class="rlab">앎과 행동</td><td><span class="hr">선지후행</span> — 알아야 실천 가능</td><td><span class="hb">지행합일</span> — 앎=실천</td></tr>
+      <tr><td class="rlab">수양 방법</td><td>격물치지·거경궁리<br>사물 이치 탐구</td><td>치양지<br>내면의 양지 발휘</td></tr>
+      <tr><td class="rlab">핵심 전제</td><td>성즉리(性卽理) — 본성이 이(理)</td><td>심즉리(心卽理) — 마음이 이(理)</td></tr>
+    </table>
+  </div>
+
+  <div class="quiz-zone" id="qz-s9">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — 주희 vs 왕수인</span><span class="quiz-score" id="qs-s9">0 / 4</span></div>
+    <div class="q-card" data-qz="s9" data-idx="0" data-ans="X">
+      <div class="q-meta">S9-Q1 · 왕수인 이(理)</div>
+      <div class="q-text">왕수인은 이(理)가 사물 안에 있으므로 사물을 탐구해야 이치에 도달할 수 있다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">왕수인은 심즉리(心卽理): <strong>이치는 내 마음 안에 있어</strong>. 사물 탐구가 아니라 마음의 양지를 발휘하는 것이 수양이야. 사물 탐구를 강조한 건 주희야. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s9" data-idx="1" data-ans="O">
+      <div class="q-meta">S9-Q2 · 왕수인 지행합일</div>
+      <div class="q-text">왕수인은 진정한 앎은 실천과 하나이므로 알면서도 실천하지 않는 것은 진정으로 아는 것이 아니라고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">지행합일(知行合一): 앎과 실천은 하나야. 진정으로 안다면 동시에 실천하게 돼. 알면서 실천 못 한다면 아직 진정으로 아는 게 아니야. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s9" data-idx="2" data-ans="X">
+      <div class="q-meta">S9-Q3 · 주희 先知後行</div>
+      <div class="q-text">주희는 앎과 실천이 하나이므로 도덕 실천에 앞서 이치를 탐구할 필요가 없다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">지행합일은 왕수인의 주장이야. 주희는 <strong>선지후행(先知後行)</strong> — 먼저 이치를 알아야(格物致知) 그 다음에 실천이 가능해. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s9" data-idx="3" data-ans="O">
+      <div class="q-meta">S9-Q4 · 공통점</div>
+      <div class="q-text">주희와 왕수인은 모두 도덕 수양을 통해 성인(聖人)이 될 수 있다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">둘 다 유학 계열로, 수양을 통해 성인에 이를 수 있다는 도덕적 자기완성의 가능성을 인정해. 방법만 다를 뿐. → O</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ S10 고대·중세 서양 ════ -->
+<div class="section" id="s10">
+  <div class="section-header">
+    <div class="section-num">SECTION 10 · 고대·중세 서양윤리</div>
+    <div class="section-title">아리스토텔레스 · 에피쿠로스 · 토마스 아퀴나스</div>
+    <div class="section-desc">
+      기출에서 매년 1~2문제. 아리스토텔레스는 덕 윤리, 에피쿠로스는 쾌락주의, 아퀴나스는 자연법이 핵심이야.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 아리스토텔레스 — 덕 윤리학, 에우다이모니아</div>
+    <p><strong style="color:var(--text)">에우다이모니아(행복):</strong> 인간의 궁극적 목적. 단순한 쾌락이 아니라 <strong>탁월한 활동의 실현</strong>이야. 덕스러운 활동을 지속적으로 할 때 얻어져.</p>
+    <p><strong style="color:var(--text)">덕(德, Arete):</strong> 중용(中庸) — 두 극단(과도·결핍) 사이의 적절한 상태. 예: 용기는 비겁함과 무모함의 중간.</p>
+    <p><strong style="color:var(--text)">덕은 습관으로 길러진다:</strong> 타고나는 게 아니야. 반복적 실천으로 덕이 형성돼. "용감한 행동을 반복하면 용감한 사람이 된다."</p>
+    <p><strong style="color:var(--y)">칸트와 차이:</strong> 아리스토텔레스는 행복(결과)이 도덕의 목적. 칸트는 행복 무관하게 의무가 우선.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 에피쿠로스 — 쾌락주의, 아타락시아</div>
+    <p><strong style="color:var(--text)">아타락시아(ataraxia):</strong> 정신적 평정심·마음의 평화. 에피쿠로스가 말하는 진정한 쾌락이야.</p>
+    <p><strong style="color:var(--text)">벤담 공리주의와 차이:</strong> 에피쿠로스는 <strong>은둔하며 소박한 삶</strong>에서 쾌락을 찾아. 공리주의처럼 사회 전체 쾌락 계산이 아니야. 고통 없는 상태(아포니아)와 정신적 평정(아타락시아)이 목표야.</p>
+    <p><strong style="color:var(--y)">주의:</strong> 에피쿠로스는 쾌락주의자지만 방종이나 과도한 쾌락 추구가 아니야. 오히려 소박하고 조용한 삶을 강조해.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 토마스 아퀴나스 — 자연법, 신학적 윤리</div>
+    <p><strong style="color:var(--text)">자연법(Natural Law):</strong> 신(神)이 만물에 심어 놓은 이성적 법칙. 인간은 이성으로 자연법을 인식할 수 있어.</p>
+    <p><strong style="color:var(--text)">법의 계층:</strong> 영원법(신의 법) → 자연법(이성으로 인식 가능) → 인정법(인간이 만든 법). 인정법이 자연법에 위배되면 무효야.</p>
+    <p><strong style="color:var(--text)">이성과 신앙의 조화:</strong> 아리스토텔레스 철학(이성)과 기독교 신학(신앙)을 종합했어. "은총은 자연을 파괴하지 않고 완성시킨다."</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="100">구분</th><th>아리스토텔레스</th><th>에피쿠로스</th><th>토마스 아퀴나스</th></tr>
+      <tr><td class="rlab">핵심 개념</td><td>에우다이모니아·덕·중용</td><td>아타락시아·아포니아</td><td>자연법·이성과 신앙 조화</td></tr>
+      <tr><td class="rlab">삶의 목표</td><td>탁월한 활동 실현(행복)</td><td>정신적 평정·고통 없음</td><td>신의 섭리에 따른 삶</td></tr>
+      <tr><td class="rlab">덕의 특징</td><td>습관으로 형성·중용</td><td>쾌락=선, 고통=악</td><td>이성으로 인식 가능한 자연법</td></tr>
+    </table>
+  </div>
+
+  <div class="quiz-zone" id="qz-s10">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — 고대·중세 서양</span><span class="quiz-score" id="qs-s10">0 / 5</span></div>
+    <div class="q-card" data-qz="s10" data-idx="0" data-ans="X">
+      <div class="q-meta">S10-Q1 · 아리스토텔레스 덕</div>
+      <div class="q-text">아리스토텔레스는 덕이 선천적으로 타고나는 것이므로 교육과 습관 형성은 덕 발휘에 불필요하다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">아리스토텔레스의 핵심: 덕은 <strong>습관(반복적 실천)으로 길러진다</strong>. 타고나는 게 아니야. "용감한 행동을 반복하면 용감한 사람이 된다." → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s10" data-idx="1" data-ans="O">
+      <div class="q-meta">S10-Q2 · 아리스토텔레스 중용</div>
+      <div class="q-text">아리스토텔레스는 덕이 과도함과 결핍이라는 두 극단 사이의 중간적 상태라고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">중용(中庸): 용기는 비겁함(결핍)과 무모함(과도) 사이의 중간. 이게 덕의 특징이야. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s10" data-idx="2" data-ans="X">
+      <div class="q-meta">S10-Q3 · 에피쿠로스 vs 벤담</div>
+      <div class="q-text">에피쿠로스는 벤담처럼 사회 전체의 쾌락 총량을 극대화하는 것을 삶의 목표로 삼았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">에피쿠로스는 <strong>개인의 정신적 평정(아타락시아)과 고통 없는 상태(아포니아)</strong>를 추구해. 사회 전체 쾌락 계산은 벤담의 공리주의야. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s10" data-idx="3" data-ans="O">
+      <div class="q-meta">S10-Q4 · 아퀴나스 자연법</div>
+      <div class="q-text">아퀴나스는 인간이 이성을 통해 신이 만물에 심어 놓은 자연법을 인식할 수 있다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">아퀴나스의 핵심: 영원법(신의 법)→자연법(이성으로 인식)→인정법(인간 제정). 이성으로 자연법을 파악 가능해. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s10" data-idx="4" data-ans="X">
+      <div class="q-meta">S10-Q5 · 아퀴나스 인정법</div>
+      <div class="q-text">아퀴나스는 인간이 만든 법(인정법)은 자연법에 위배되어도 국가가 제정했으므로 효력이 있다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">아퀴나스는 인정법이 자연법에 위배되면 <strong>효력이 없다</strong>고 봐. 자연법이 인정법보다 상위야. → X</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ S11 실존주의 ════ -->
+<div class="section" id="s11">
+  <div class="section-header">
+    <div class="section-num">SECTION 11 · 현대 서양윤리</div>
+    <div class="section-title">실존주의 — 키르케고르 · 하이데거</div>
+    <div class="section-desc">
+      기출에서 꾸준히 1문제. 키르케고르는 3단계 실존, 하이데거는 죽음 인식과 본래성이 핵심이야.
+    </div>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 키르케고르 — 3단계 실존</div>
+    <p>인간은 세 단계를 거쳐 진정한 자기 자신이 될 수 있어.</p>
+    <p><strong style="color:var(--y)">심미적 단계:</strong> 감각적 쾌락 추구. 결국 권태와 절망에 빠져.</p>
+    <p><strong style="color:var(--y)">윤리적 단계:</strong> 도덕적 의무와 규범을 따름. 그러나 완전한 의무 이행의 한계로 또 다른 절망.</p>
+    <p><strong style="color:var(--y)">종교적 단계:</strong> 신 앞의 단독자로서 절대적 신에 대한 믿음. 진정한 실존. "신 앞에 선 단독자."</p>
+    <p><strong style="color:var(--text)">주관적 진리:</strong> 실존은 "나에게 진리인 진리"야. 객관적·보편적 진리가 아닌 <strong>주체적 결단</strong>이 중요해.</p>
+  </div>
+
+  <div class="ctx">
+    <div class="ctx-head">📌 하이데거 — 죽음을 향한 존재, 본래성</div>
+    <p><strong style="color:var(--text)">현존재(Dasein):</strong> 인간을 가리키는 하이데거 용어. 자신의 존재를 문제 삼는 유일한 존재야.</p>
+    <p><strong style="color:var(--text)">죽음 인식:</strong> 인간은 "죽음을 향한 존재(Sein zum Tode)"야. 죽음을 직시하고 받아들일 때 비로소 자신의 유한성을 깨닫고 <strong>본래적 삶</strong>을 살 수 있어.</p>
+    <p><strong style="color:var(--text)">비본래성:</strong> 세간의 사람들(Das Man) 속에 휩쓸려 자기 자신을 잃고 사는 상태.</p>
+    <p><strong style="color:var(--y)">핵심:</strong> 죽음 직시 → 유한성 자각 → 본래적 자기 존재 회복</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th width="100">구분</th><th>키르케고르</th><th>하이데거</th></tr>
+      <tr><td class="rlab">핵심 개념</td><td>3단계 실존·주관적 진리·단독자</td><td>현존재·죽음 인식·본래성</td></tr>
+      <tr><td class="rlab">진정한 자기</td><td>신 앞의 단독자 (종교적 단계)</td><td>죽음 직시 통한 본래적 실존</td></tr>
+      <tr><td class="rlab">위기</td><td>권태·절망</td><td>비본래성(Das Man에 휩쓸림)</td></tr>
+    </table>
+  </div>
+
+  <div class="quiz-zone" id="qz-s11">
+    <div class="quiz-header"><span class="quiz-header-text">📝 OX 퀴즈 — 실존주의</span><span class="quiz-score" id="qs-s11">0 / 4</span></div>
+    <div class="q-card" data-qz="s11" data-idx="0" data-ans="O">
+      <div class="q-meta">S11-Q1 · 키르케고르 단계</div>
+      <div class="q-text">키르케고르는 인간이 심미적 단계→윤리적 단계→종교적 단계를 거쳐 진정한 실존에 이를 수 있다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">키르케고르의 실존 3단계. 심미(쾌락) → 윤리(의무) → 종교(신 앞 단독자). 마지막 종교적 단계가 진정한 실존이야. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s11" data-idx="1" data-ans="X">
+      <div class="q-meta">S11-Q2 · 키르케고르 진리</div>
+      <div class="q-text">키르케고르는 실존적 진리는 누구에게나 동일하게 적용되는 객관적·보편적 진리라고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">키르케고르의 주관적 진리: "나에게 진리인 진리." 객관적 보편 진리가 아니라 <strong>주체적 결단과 선택</strong>이 중요해. → X</div></div>
+    </div>
+    <div class="q-card" data-qz="s11" data-idx="2" data-ans="O">
+      <div class="q-meta">S11-Q3 · 하이데거 죽음</div>
+      <div class="q-text">하이데거는 죽음을 직시함으로써 인간이 자신의 유한성을 자각하고 본래적 삶을 살 수 있다고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">하이데거의 핵심: 죽음을 향한 존재(Sein zum Tode). 죽음 직시 → 유한성 자각 → 본래적 실존 회복. → O</div></div>
+    </div>
+    <div class="q-card" data-qz="s11" data-idx="3" data-ans="X">
+      <div class="q-meta">S11-Q4 · 하이데거 비본래성</div>
+      <div class="q-text">하이데거는 일상에서 세간의 사람들(Das Man)처럼 사는 것이 본래적 실존의 모습이라고 보았다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no">✗ 오답</span><div class="q-exp" style="display:none">Das Man(세간의 사람들)에 휩쓸리는 것은 <strong>비본래적</strong> 삶이야. 죽음을 직시하고 자기 자신으로 돌아오는 것이 본래성이야. → X</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════ S12 출제 비중표 ════ -->
+<div class="section" id="s12">
+  <div class="section-header">
+    <div class="section-num">SECTION 12 · 출제 데이터</div>
+    <div class="section-title">단원별 출제 비중표 &amp; 고난도 패턴</div>
+    <div class="section-desc">수능·모평·학평 기출 분석 기반. 어디에 시간을 더 투자할지 결정하는 데 써.</div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>단원</th><th>주요 주제</th><th>출제 빈도</th><th>난이도</th><th>전략</th></tr>
+      <tr><td class="rlab">서양 윤리 ①</td><td>칸트(의무론) vs 공리주의(벤담·밀)</td><td><span class="hg">★★★★★ 매년 필출</span></td><td>중~고</td><td>벤담·밀 차이 반드시 구분</td></tr>
+      <tr><td class="rlab">동·서양 비교</td><td>흄·칸트·공자·맹자 조합</td><td><span class="hg">★★★★☆</span></td><td>중</td><td>입장별 방향성 빠른 판단</td></tr>
+      <tr><td class="rlab">한국 성리학</td><td>이황 vs 이이 이기론·사단칠정</td><td><span class="hy">★★★★☆ 킬러빈출</span></td><td><span class="hr">고</span></td><td>이호발설 vs 기발이승 구분이 핵심</td></tr>
+      <tr><td class="rlab">한국 불교</td><td>원효·지눌</td><td><span class="hy">★★★☆☆ 최근 상승</span></td><td><span class="hr">고</span></td><td>정혜 본체·작용 순서 함정 주의</td></tr>
+      <tr><td class="rlab">중국 성리학</td><td>주희 vs 왕수인</td><td><span class="hy">★★★☆☆</span></td><td>중</td><td>선지후행 vs 지행합일 구분</td></tr>
+      <tr><td class="rlab">사회계약론</td><td>홉스·로크·루소</td><td><span class="hy">★★★☆☆</span></td><td>중</td><td>저항권 유무 + 자연상태 평가</td></tr>
+      <tr><td class="rlab">현대 윤리</td><td>롤스·노직·자유주의·공동체주의</td><td><span class="hy">★★★☆☆</span></td><td>중</td><td>무지의 베일·차등원칙 구체적 이해</td></tr>
+      <tr><td class="rlab">고대 서양</td><td>아리스토텔레스·에피쿠로스</td><td><span class="hb">★★★☆☆</span></td><td>중</td><td>에피쿠로스≠방종, 중용 개념</td></tr>
+      <tr><td class="rlab">중세 서양</td><td>아퀴나스 자연법</td><td><span class="hb">★★☆☆☆</span></td><td>중</td><td>법 계층 구조 이해</td></tr>
+      <tr><td class="rlab">실존주의</td><td>키르케고르·하이데거</td><td><span class="hb">★★☆☆☆</span></td><td>중</td><td>3단계·죽음 인식 키워드</td></tr>
+      <tr><td class="rlab">실학</td><td>정약용</td><td><span class="hb">★★☆☆☆</span></td><td>중</td><td>성기호설·인의예지=실천 결과</td></tr>
+    </table>
+  </div>
+
+  <div class="ctx" style="margin-top:20px">
+    <div class="ctx-head">📌 고난도 문제 유형 패턴 TOP 5</div>
+    <p><strong style="color:var(--y)">① 역배점 함정:</strong> 쉬워 보이는 3점 문제에 함정, 어려워 보이는 2점 문제는 직관적. 배점만 보고 시간 배분하지 마.</p>
+    <p><strong style="color:var(--y)">② 낯선 선지:</strong> 교과서에 없는 듯한 표현으로 낯설게 포장. 실제 내용은 알던 개념이야. 키워드 추출 후 방향성으로 판단해.</p>
+    <p><strong style="color:var(--y)">③ 공통점·차이점 역이용:</strong> 실제로 공통점인데 차이점처럼, 차이점인데 공통점처럼 제시. 반드시 두 사상가 모두 확인해.</p>
+    <p><strong style="color:var(--y)">④ 합답형(ㄱㄴㄷ 고르기):</strong> ㄱ·ㄴ이 확실해도 ㄷ·ㄹ에서 말장난으로 함정. 선지 하나하나 이유를 따져야 해.</p>
+    <p><strong style="color:var(--y)">⑤ 한국 사상 지엽 선지:</strong> 이기론의 세부 용어(이기호발/기발이승/칠정포사단), 지눌의 정혜 본체·작용 순서 같은 디테일. 개념서 날개 설명까지 챙겨야 해.</p>
+  </div>
+</div>
+  <div class="quiz-zone" id="qz-s12">
+    <div class="quiz-header">
+      <span class="quiz-header-text">📝 OX 퀴즈 — 출제 경향 & 고난도 패턴</span>
+      <span class="quiz-score" id="qs-s12">0 / 5</span>
+    </div>
+    <div class="q-card" data-qz="s12" data-idx="0" data-ans="X">
+      <div class="q-meta">S12-Q1 · 이기론 출제 경향</div>
+      <div class="q-text">이황·이이 이기론은 윤사 시험에서 출제 비중이 낮아 간략히 알아두는 것으로 충분하다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no"></span><div class="q-exp">이기론은 역대 윤사 킬러 문항의 단골 소재야. 이황(이기호발설·주리론)과 이이(기발이승일도설·주기론)의 차이가 세밀하게 출제돼. 반드시 깊이 공부해야 해.</div></div>
+    </div>
+    <div class="q-card" data-qz="s12" data-idx="1" data-ans="O">
+      <div class="q-meta">S12-Q2 · 합답형 문제 대응</div>
+      <div class="q-text">ㄱ·ㄴ·ㄷ을 고르는 합답형 문제에서 ㄱ·ㄴ이 확실해도 ㄷ·ㄹ에서 말장난 함정이 자주 등장한다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-ok"></span><div class="q-exp"></div></div>
+    </div>
+    <div class="q-card" data-qz="s12" data-idx="2" data-ans="X">
+      <div class="q-meta">S12-Q3 · 공리주의 함정 — 2025 수능 최다오답</div>
+      <div class="q-text">2025 수능 윤사에서 "행복은 쾌락의 양을 증가시킴으로써 증진될 수 있다"는 선지는 벤담만 동의하고 밀은 동의하지 않는다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no"></span><div class="q-exp">이 선지로 2025 수능 오답률 83.7%가 나왔어! 밀도 쾌락의 양 증가를 통한 행복 증진 자체는 인정해. 밀과 벤담의 차이는 질적 차이를 인정하느냐(밀)·안 하느냐(벤담)야. 양 증가로 행복 증진 = 밀도 동의 O.</div></div>
+    </div>
+    <div class="q-card" data-qz="s12" data-idx="3" data-ans="O">
+      <div class="q-meta">S12-Q4 · 원효·지눌 출제 경향</div>
+      <div class="q-text">최근 수능에서 원효·지눌 문제가 킬러로 출제된 사례가 있으며, 특히 지눌의 정혜쌍수에서 정(定)과 혜(慧)가 각각 무엇의 본체·작용인지 혼동을 유도하는 선지가 출제됐다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-ok"></span><div class="q-exp"></div></div>
+    </div>
+    <div class="q-card" data-qz="s12" data-idx="4" data-ans="X">
+      <div class="q-meta">S12-Q5 · 역배점 주의</div>
+      <div class="q-text">수능 윤사에서 3점 문제는 반드시 2점 문제보다 어렵게 출제된다.</div>
+      <div class="q-btns"><button class="q-btn o-btn" onclick="checkQ(this,'O')">O</button><button class="q-btn x-btn" onclick="checkQ(this,'X')">X</button></div>
+      <div class="q-result"><span class="q-tag-no"></span><div class="q-exp">역배점이 자주 발생해. 쉬워 보이는 3점 문제에 함정이 있고, 어려워 보이는 2점 문제는 직관적인 경우가 많아. 배점만 보고 난이도를 판단하면 안 돼.</div></div>
+    </div>
+  </div>
+
 </div>
 
 </main>
@@ -662,7 +1562,7 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
 
 <script>
 (function(){
-  const IDS = ['s1', 's2', 's3', 's4', 's5', 's6'];
+  const IDS = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'];
   const btns = document.querySelectorAll('.anc-btn');
 
   // 버튼 클릭 → 해당 섹션으로 스크롤
@@ -699,6 +1599,73 @@ td.rlab{font-weight:700;font-size:11.5px;color:var(--dim);white-space:nowrap;bac
   window.addEventListener('scroll', onScroll, {passive: true});
   onScroll(); // 초기 실행
 })();
+
+// ── OX Quiz Engine ──────────────────────────────────────────────────────────
+(function(){
+  var scores = {};
+  function updateScore(qz){
+    var cards = document.querySelectorAll('[data-qz="'+qz+'"]');
+    var done = 0;
+    cards.forEach(function(c){ if(c.dataset.done) done++; });
+    var el = document.getElementById('qs-'+qz);
+    if(el) el.textContent = done + ' / ' + cards.length;
+  }
+  window.checkQ = function(btn, ans){
+    var card = btn.closest('.q-card');
+    if(card.dataset.done) return;
+    var correct = card.dataset.ans;
+    var result = card.querySelector('.q-result');
+    var tag = result.querySelector('.q-tag-ok, .q-tag-no');
+    var exp = result.querySelector('.q-exp');
+    card.dataset.done = '1';
+    card.querySelectorAll('.q-btn').forEach(function(b){ b.disabled = true; });
+    if(ans === correct){
+      btn.classList.add('sel');
+      if(tag){ tag.className='q-tag-ok'; tag.textContent='✓ 정답!'; }
+      exp.style.display='none';
+    } else {
+      btn.classList.add('sel');
+      var right = card.querySelector('.'+(correct==='O'?'o':'x')+'-btn');
+      if(right) right.classList.add('sel');
+      if(tag){ tag.className='q-tag-no'; tag.textContent='✗ 오답'; }
+      exp.style.display='block';
+    }
+    result.classList.add('show');
+    updateScore(card.dataset.qz);
+  };
+})();
+
+
+(function(){
+  window.checkQ = function(btn, ans){
+    var card = btn.closest('.q-card');
+    if(card.dataset.done) return;
+    var correct = card.dataset.ans;
+    card.dataset.done = '1';
+    card.querySelectorAll('.q-btn').forEach(function(b){ b.disabled=true; });
+    var result = card.querySelector('.q-result');
+    var tag = result.querySelector('.q-tag-ok,.q-tag-no');
+    var exp = result.querySelector('.q-exp');
+    if(ans === correct){
+      btn.classList.add('sel');
+      if(tag){ tag.className='q-tag-ok'; tag.textContent='✓ 정답!'; }
+      if(exp) exp.style.display='none';
+    } else {
+      btn.classList.add('sel');
+      var rightBtn = card.querySelector('.'+(correct==='O'?'o':'x')+'-btn');
+      if(rightBtn) rightBtn.classList.add('sel');
+      if(tag){ tag.className='q-tag-no'; tag.textContent='✗ 오답 — 해설 확인'; }
+      if(exp) exp.style.display='block';
+    }
+    result.classList.add('show');
+    var qz = card.dataset.qz;
+    var done = document.querySelectorAll('[data-qz="'+qz+'"][data-done]').length;
+    var total = document.querySelectorAll('[data-qz="'+qz+'"]').length;
+    var sc = document.getElementById('qs-'+qz);
+    if(sc) sc.textContent = done + ' / ' + total;
+  };
+})();
+
 </script>
 
 </body>
